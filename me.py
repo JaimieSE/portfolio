@@ -1,7 +1,6 @@
 from PIL import Image
 import streamlit as st
 import  requests 
-from streamlit_lottie import st_lottie
 
 
 
@@ -11,11 +10,11 @@ image_sponge = Image.open(r"C:\Users\June\Desktop\Python\Images\spongebob.png")
 image_doit = Image.open(r"C:\Users\June\Desktop\Python\Images\photo_6314201979752133422_y.jpg")
 image_Figma1 = Image.open(r"C:\Users\June\Desktop\Python\Images\Starting page.png")
 image_cat = Image.open(r"C:\Users\June\Downloads\photo_6316453779565818721_y.jpg")
-image_Figma2 = Image.open(r"C:\Users\June\Downloads\iPhone 14 Pro - 1.png")
-image_figma3 = Image.open(r"C:\Users\June\Downloads\iPhone 14 Pro - 3.png")
-image_figma4 = Image.open(r"C:\Users\June\Downloads\iPhone 14 Pro - 4.png")
-image_figma5 = Image.open(r"C:\Users\June\Downloads\iPhone 14 Pro - 5.png")
-image_figma6 = Image.open(r"C:\Users\June\Downloads\iPhone 14 Pro - 6.png")
+image_Figma2 = Image.open(r"C:\Users\June\Desktop\Python\Images\iPhone 14 Pro - 1.png")
+image_figma3 = Image.open(r"C:\Users\June\Desktop\Python\Images\iPhone 14 Pro - 3.png")
+image_figma4 = Image.open(r"C:\Users\June\Desktop\Python\Images\iPhone 14 Pro - 4.png")
+image_figma5 = Image.open(r"C:\Users\June\Desktop\Python\Images\iPhone 14 Pro - 5.png")
+image_figma6 = Image.open(r"C:\Users\June\Desktop\Python\Images\iPhone 14 Pro - 6.png")
 image_happy = Image.open(r"C:\Users\June\Desktop\Python\Images\111-1110771_thumbs-up-emoji-meme-hd-png-download.png")
 
 
@@ -207,3 +206,5 @@ with st.form(key="form2"):
     st.write(name, "I hope you can imagine the disappointment in my eyes. I was hoping no one chose this option but you just had to be special. No further comment, I wish you happiness.")
 
 st.write("**_THIS IS A JOKE GUYS, I RESPECT ALL COFFEE PREFERENCES!_** :gray[except for frappecino enjoyers]")
+
+st.balloons()
