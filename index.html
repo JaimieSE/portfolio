@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="profile-circle">
+        <img src="assets/Self Picture.jpg" alt="Profile picture" />
+      </div>
+
+      <div class="intro-card">
+        <p class="eyebrow">Electrical Engineering Portfolio</p>
+        <h1>Hello! I'm <span id="name">XXX</span>!</h1>
+        <p id="summary"></p>
+      </div>
+    </section>
+
+    <section class="qualifications glass-section">
+      <h2>Qualifications</h2>
+      <div id="qualifications-list"></div>
+    </section>
+
+    <section class="skills glass-section">
+      <h2>Software & Skills</h2>
+      <div id="skills-cloud" class="skills-cloud"></div>
+    </section>
+
+    <section class="tabs-section glass-section">
+      <div class="tabs">
+        <button class="tab active" data-section="experience">Experience</button>
+        <button class="tab" data-section="projects">Projects</button>
+      </div>
+
+      <div id="content-area"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
