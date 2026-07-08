@@ -60,15 +60,15 @@ const portfolio = {
         "A wall cleaning robot to automate the cleaning process in hard-to-reach areas of HDB flats.",
       fullDescription: "DalLegs is an innovative wall-climbing robot designed to clean hard-to-reach areas in HDB flats. It uses advanced adhesion technology and automated navigation to efficiently cover vertical surfaces.",
       images: [
-        "assets/DalLegs Model.png",
-        "assets/Dallegs Body.png",
-        "assets/Dallegs Brush.png",
-        "assets/Dallegs Arm.png",
+        "assets/DalLegsModel.png",
+        "assets/DallegsBody.png",
+        "assets/DallegsBrush.png",
+        "assets/DallegsArm.png",
         "assets/Web Interface.png",
         "assets/circuitmng.jpg",
         "assets/showcase.jpg"
       ],
-      explodedView: "assets/Dallegs Body.png",
+      explodedView: "assets/DallegsBody.png",
       imageDescriptions: [
         "Main DalLegs Robot Model - The complete assembled robot showing the integrated adhesion system and cleaning mechanism",
         "Robot Body - The main chassis of the robot, designed to house the microcontroller and other electronic components",
@@ -126,7 +126,7 @@ const portfolio = {
         "Opening Mechanism - From the book of moving mechanisms, we were inspired by mechanism 224 and added our twist on it.",
         "Presentation Booth - The project showcased to stakeholders, i.e ST Engineering, presenting proof of concept to be adopted.",
       ],
-      poster: "assets/A1 3D poster.pdf",
+      poster: "assets/3dposter.pdf",
       canvaLink: "",
       paperLink: "",
       technologies: {
