@@ -12,13 +12,17 @@ const portfolio = {
   ],
 
   skills: [
-    { name: "AutoCAD", image: "assets/autocad.png" },
-    { name: "MATLAB", image: "assets/matlab.png" },
-    { name: "Arduino", image: "assets/arduino.png" },
-    { name: "Python", image: "assets/python.png" },
-    { name: "C++", image: "assets/cpp.png" },
-    { name: "Excel", image: "assets/excel.png" },
-    { name: "LTspice", image: "assets/ltspice.png" }
+    { name: "MATLAB", image: "assets/matlab.png", category: "Software", projects: ["The Hive"] },
+    { name: "Arduino", image: "assets/arduino.png", category: "Software", projects: ["DalLegs", "The Hive"] },
+    { name: "PyTorch", image: "assets/pytorch.png", category: "Software", projects: ["DalLegs"] },
+    { name: "Python", image: "assets/python.png", category: "Skills", projects: ["DalLegs", "The Hive"] },
+    { name: "VSCode", image: "assets/VSC.png", category: "Skills", projects: ["DalLegs", "The Hive"] },
+    { name: "C++", image: "assets/c++.png", category: "Skills", projects: ["DalLegs", "The Hive"] },
+    { name: "Excel", image: "assets/excel.png", category: "Skills", projects: ["DalLegs"] },
+    { name: "Fusion 360", image: "assets/fusion.png", category: "Software", projects: ["DalLegs", "The Hive"] },
+    { name: "CST", image: "assets/cst.png", category: "Software", projects: ["Antenna Design"] },
+    { name: "Marlin", image: "assets/marlin.png", category: "Skills", projects: ["DalLegs"] },
+    { name: "HTML/CSS/JS", image: "assets/htmlcssjs.png", category: "Skills", projects: ["DalLegs"] }
   ],
 
   experience: [
@@ -33,6 +37,17 @@ const portfolio = {
         "Liaised with major stakeholders and handled meetings to discuss project progress and requirements.",
         "Documented Root Cause Analysis (RCA) for system failures and proposed solutions.",
       ]
+    },
+    {
+      company: "VEXU Robotics Team, SOAR",
+      period: "June 2024 - Dec 2024",
+      responsibilities: [
+        "3D Print farm manager.",
+        "Ensured proper maintenance and operation of 3D printers.",
+        "Experimentation of filament types and printing parameters for break resistance.",
+        "Prepared 3D Models for prototyping and part manufacturing.",  
+        "Recycled failed prints with an inhouse filament recycler.",
+      ]
     }
   ],
 
@@ -46,35 +61,47 @@ const portfolio = {
       fullDescription: "DalLegs is an innovative wall-climbing robot designed to clean hard-to-reach areas in HDB flats. It uses advanced adhesion technology and automated navigation to efficiently cover vertical surfaces.",
       images: [
         "assets/DalLegs Model.png",
+        "assets/Dallegs Body.png",
+        "assets/Dallegs Brush.png",
+        "assets/Dallegs Arm.png",
+        "assets/Web Interface.png",
         "assets/circuitmng.jpg",
         "assets/showcase.jpg"
       ],
+      explodedView: "assets/Dallegs Body.png",
       imageDescriptions: [
         "Main DalLegs Robot Model - The complete assembled robot showing the integrated adhesion system and cleaning mechanism",
-        "Circuit Management System - Detailed view of the microcontroller unit and electrical connections that power the robot",
+        "Robot Body - The main chassis of the robot, designed to house the microcontroller and other electronic components",
+        "Motorized Brush Assembly - The cleaning mechanism that includes high-speed brushes and split nozzles for effective cleaning",
+        "Articulated Arm - The robotic arm that allows the brushes to reach different angles and surfaces with two positional degrees of freedom",
+        "Web Interface - The user interface for controlling and monitoring the robot's operations remotely",
+        "Circuit Management System - Brief view of the microcontroller unit and electrical connections that power the robot",
         "Live Demonstration - The robot in action during testing on vertical surfaces"
       ],
-      poster: "assets/poster.pdf",
+      poster: "assets/POSTER.pdf",
+      paperLink: "assets/30.007 paper.pdf",
+      canvaLink: "https://canva.link/projectview",
       technologies: {
-        languages: ["C++", "Arduino"],
-        software: ["AutoCAD", "LTspice", "Arduino IDE"]
+        languages: ["C++", "Arduino", "Python", "html", "CSS", "JavaScript", "Gcode",],
+        software: ["CFD", "Fusion360", "Arduino IDE", "VScode", "Computer Vision",],
+        firmware: ["GRBL", "Marlin", "ESP32","Raspberry Pi"]
       },
       components: [
         {
-          name: "Adhesion System",
-          description: "Electrostatic adhesion mechanism that allows the robot to grip and climb vertical walls without damaging surfaces."
+          name: "Computer Vision",
+          description: "Using YoloV8 and OpenCV to detect the severity of dirt, the robot can adjust pressure and cleaning speed accordingly"
         },
         {
           name: "Microcontroller Unit",
-          description: "Arduino-based control system that manages motor coordination, sensor input processing, and autonomous navigation."
+          description: "ESP32-based control system that manages motor coordination."
         },
         {
           name: "Motorized Brushes",
           description: "High-speed brushes powered by DC motors for effective cleaning action on various wall surfaces."
         },
         {
-          name: "Sensor Array",
-          description: "Ultrasonic and proximity sensors for obstacle detection, navigation, and surface analysis."
+          name: "Navigation System",
+          description: "Using a central RPI system to communicaate with the ESP32 on the testing rig, the robot can navigate planar surfaces using Gcode with the help of Nema32 stepper motors."
         }
       ]
     }
@@ -89,17 +116,22 @@ const portfolio = {
       images: [
         "assets/Solar.png",
         "assets/Origami.png",
-        "assets/showcase.jpg"
+        "assets/Opening Mechanism.png",
+        "assets/3dbooth.jpg"
       ],
+      explodedView: "assets/explodesolar.png",
       imageDescriptions: [
         "Solar Array Configuration - The deployed solar panel modules arranged for optimal energy generation",
         "Origami Mechanism - Innovative folding design that allows compact storage and autonomous deployment of the units",
-        "Full System Integration - Complete The Hive system with multiple units working together in the field"
+        "Opening Mechanism - From the book of moving mechanisms, we were inspired by mechanism 224 and added our twist on it.",
+        "Presentation Booth - The project showcased to stakeholders, i.e ST Engineering, presenting proof of concept to be adopted.",
       ],
       poster: "assets/A1 3D poster.pdf",
+      canvaLink: "",
+      paperLink: "",
       technologies: {
         languages: ["Python", "C++"],
-        software: ["AutoCAD", "MATLAB", "Arduino"]
+        software: ["Fusion360", "MATLAB", "Arduino", "VSCode"]
       },
       components: [
         {
@@ -123,6 +155,16 @@ const portfolio = {
       ]
 };
 
+document.documentElement.style.setProperty("--mx", "50%");
+document.documentElement.style.setProperty("--my", "50%");
+
+window.addEventListener("pointermove", (event) => {
+  const x = (event.clientX / window.innerWidth) * 100;
+  const y = (event.clientY / window.innerHeight) * 100;
+  document.documentElement.style.setProperty("--mx", `${x}%`);
+  document.documentElement.style.setProperty("--my", `${y}%`);
+});
+
 document.getElementById("name").textContent = portfolio.name;
 document.getElementById("summary").textContent = portfolio.summary;
 
@@ -138,34 +180,47 @@ portfolio.qualifications.forEach((item) => {
 
 const skillsCloud = document.getElementById("skills-cloud");
 
-const cloudPositions = [
-  { left: "45%", top: "8%" },
-  { left: "22%", top: "18%" },
-  { left: "66%", top: "20%" },
-  { left: "12%", top: "48%" },
-  { left: "44%", top: "42%" },
-  { left: "76%", top: "50%" },
-  { left: "30%", top: "68%" },
-  { left: "60%", top: "72%" },
-  { left: "8%", top: "10%" },
-  { left: "82%", top: "8%" },
-  { left: "5%", top: "75%" },
-  { left: "86%", top: "78%" }
-];
+const groupedSkills = portfolio.skills.reduce((groups, skill) => {
+  if (!groups[skill.category]) {
+    groups[skill.category] = [];
+  }
+  groups[skill.category].push(skill);
+  return groups;
+}, {});
 
-portfolio.skills.forEach((skill, index) => {
-  const position = cloudPositions[index % cloudPositions.length];
-
-  skillsCloud.innerHTML += `
-    <div 
-      class="skill-icon" 
-      data-name="${skill.name}"
-      style="left: ${position.left}; top: ${position.top};"
-    >
-      <img src="${skill.image}" alt="${skill.name}" />
-    </div>
-  `;
-});
+skillsCloud.innerHTML = `
+  <p class="skills-hint">Hover over a skill to see the projects it was used in.</p>
+  <div class="skills-category-grid">
+    ${Object.entries(groupedSkills)
+      .map(
+        ([category, items]) => `
+          <div class="skill-category">
+            <h3>${category}</h3>
+            <div class="skill-list">
+              ${items
+                .map(
+                  (skill) => `
+                    <div class="skill-pill" tabindex="0">
+                      <img src="${skill.image}" alt="${skill.name}" />
+                      <span>${skill.name}</span>
+                      <div class="skill-tooltip">
+                        <strong>${skill.name}</strong>
+                        <span>Used in:</span>
+                        <ul>
+                          ${skill.projects.map((project) => `<li>${project}</li>`).join("")}
+                        </ul>
+                      </div>
+                    </div>
+                  `
+                )
+                .join("")}
+            </div>
+          </div>
+        `
+      )
+      .join("")}
+  </div>
+`;
 
 const contentArea = document.getElementById("content-area");
 const tabs = document.querySelectorAll(".tab");
@@ -207,8 +262,18 @@ function renderProjects() {
       .join("");
 
     const posterButton = project.poster 
-      ? `<a href="${project.poster}" target="_blank" class="pdf-button">📄 View Poster</a>`
+      ? `<a href="${project.poster}" target="_blank" rel="noopener noreferrer" class="pdf-button">Download Poster</a>`
       : '';
+
+    const paperButton = (project.paperLink || project.paper)
+      ? `<a href="${project.paperLink || project.paper}" target="_blank" rel="noopener noreferrer" class="pdf-button">📄 Download Paper</a>`
+      : '';
+
+    const canvaButton = project.canvaLink
+      ? `<a href="${project.canvaLink}" target="_blank" rel="noopener noreferrer" class="pdf-button">🎨 View Canva Presentation</a>`
+      : '';
+
+    const hoverImage = project.explodedView || mainImage;
 
     list.innerHTML += `
       <article class="card">
@@ -217,17 +282,32 @@ function renderProjects() {
         <p>${project.description}</p>
 
         <div class="featured-image-container">
-          <img src="${mainImage}" alt="${project.name} - Main Model" class="featured-image" data-project-id="${project.id}" />
-          <div class="featured-overlay">Click to view details</div>
+          <img src="${mainImage}" alt="${project.name} - Main Model" class="featured-image" data-project-id="${project.id}" data-default-image="${mainImage}" data-hover-image="${hoverImage}" />
+          <div class="featured-overlay">Hover for exploded view</div>
         </div>
 
-        ${posterButton}
+        <div class="project-actions">
+          ${posterButton}
+          ${canvaButton}
+          ${paperButton}
+        </div>
       </article>
     `;
   });
 
   // Add click handlers for featured images
   document.querySelectorAll(".featured-image").forEach((img) => {
+    const defaultImage = img.dataset.defaultImage;
+    const hoverImage = img.dataset.hoverImage || defaultImage;
+
+    img.addEventListener("mouseenter", () => {
+      img.src = hoverImage;
+    });
+
+    img.addEventListener("mouseleave", () => {
+      img.src = defaultImage;
+    });
+
     img.addEventListener("click", () => {
       const projectId = img.dataset.projectId;
       const project = portfolio.projects.find((p) => p.id === projectId);
