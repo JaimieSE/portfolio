@@ -3,36 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Jamie Ngu | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="cad-cursor" aria-hidden="true"></div>
   <div class="background-aurora" aria-hidden="true"></div>
 
-  <main>
+  <main class="page-shell">
     <section class="hero">
-      <div class="profile-circle">
-        <img src="assets/Self Picture.jpg" alt="Profile picture" />
-      </div>
-
-      <div class="intro-card">
+      <div class="hero-copy">
         <p class="eyebrow">Electrical Engineering Portfolio</p>
         <h1>Hello! I'm <span id="name">XXX</span>!</h1>
         <p id="summary"></p>
+        <div class="hero-actions">
+          <a href="#qualifications" class="ghost-link">See qualifications</a>
+          <a href="#skills" class="ghost-link ghost-link-alt">Explore skill tank</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-ring">
+          <img src="assets/Self Picture.jpg" alt="Profile picture" />
+        </div>
+        <div class="profile-badge">Engineering • Robotics • Embedded Systems</div>
+        <div id="stats-dashboard" class="stats-dashboard"></div>
       </div>
     </section>
 
-    <section class="qualifications glass-section">
-      <h2>Qualifications</h2>
-      <div id="qualifications-list"></div>
+    <section id="qualifications" class="glass-section reveal-section">
+      <div class="section-heading">
+        <p class="eyebrow">Qualifications</p>
+        <h2>My foundation, sharpened through hands-on engineering work.</h2>
+      </div>
+      <div id="qualifications-list" class="card-stack"></div>
     </section>
 
-    <section class="skills glass-section">
-      <h2>Software & Skills</h2>
-      <div id="skills-cloud" class="skills-cloud"></div>
+    <section id="skills" class="glass-section reveal-section">
+      <div class="section-heading">
+        <p class="eyebrow">Skills</p>
+        <h2>Floating through the toolkit that powers my projects.</h2>
+      </div>
+      <div class="tank-shell">
+        <div class="tank-glow"></div>
+        <div class="tank-surface">
+          <div class="tank-water"></div>
+          <div class="tank-label">Drag the bubbles around the tank</div>
+          <div id="skills-cloud" class="skills-cloud"></div>
+        </div>
+      </div>
     </section>
 
-    <section class="tabs-section glass-section">
+    <section class="experience-hero reveal-section" aria-label="Experience overview">
+      <div class="experience-hero-content">
+        <p class="eyebrow">Journey</p>
+        <h2 data-typewriter="EXPOSURE" aria-label="EXPOSURE"></h2>
+        <p>My work spans software implementation, robotics and project delivery.</p>
+      </div>
+    </section>
+
+    <section class="tabs-section reveal-section">
+      <div class="section-heading">
+        <p class="eyebrow">Experience & Projects</p>
+        <h2>Discover how I turn engineering ideas into real-world work.</h2>
+      </div>
       <div class="tabs">
         <button class="tab active" data-section="experience">Experience</button>
         <button class="tab" data-section="projects">Projects</button>
