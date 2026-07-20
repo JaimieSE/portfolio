@@ -2,6 +2,12 @@ const portfolio = {
   name: "Jaimie Ngu",
   summary:
     "I am an Electrical Engineering undergraduate with interests in automation, robotics and embedded systems.",
+  contact: {
+    email: "ngujaimie@gmail.com",
+    linkedin: "https://www.linkedin.com/in/jaimie-ngu",
+    github: "",
+    resume: ""
+  },
   statistics: [
     {
       value: 4,
@@ -27,27 +33,53 @@ const portfolio = {
   qualifications: [
     {
       title: "Bachelor of Engineering",
+      date: "Sep 2023 — May 2027",
       detail:
-        "Engineering Product Development, specialising in Electrical Engineering with a minor in Artificial Intelligence"
+        'Engineering Product Development, specialising in <span class="education-specialisation">Electrical Engineering</span> with a <span class="education-specialisation education-ai">Minor in AI</span>'
+    },
+    {
+      title: "A Levels",
+      date: "Feb 2021 — Dec 2022",
+      detail: "Physics, Mathematics, Chemistry and Economics"
     }
   ],
   skills: [
-    { name: "MATLAB", image: "assets/matlab.png", projects: ["The Hive"] },
-    { name: "Arduino", image: "assets/arduino.png", projects: ["DalLegs", "The Hive"] },
-    { name: "PyTorch", image: "assets/pytorch.png", projects: ["DalLegs"] },
-    { name: "Python", image: "assets/python.png", projects: ["DalLegs", "The Hive"] },
-    { name: "VSCode", image: "assets/VSC.png", projects: ["DalLegs", "The Hive"] },
-    { name: "C++", image: "assets/c++.png", projects: ["DalLegs", "The Hive"] },
-    { name: "Excel", image: "assets/excel.png", projects: ["DalLegs"] },
-    { name: "Fusion 360", image: "assets/fusion.png", projects: ["DalLegs", "The Hive"] },
-    { name: "CST", image: "assets/cst.png", projects: ["Colonoscopy Antenna Design"] },
-    { name: "Marlin", image: "assets/marlin.png", projects: ["DalLegs"] },
-    { name: "HTML/CSS/JS", image: "assets/htmlcssjs.png", projects: ["DalLegs"] }
+    { name: "ESP32", category: "Embedded & Firmware", projects: ["DalLegs"], appliedTo: ["Motor coordination", "MQTT communication", "Distributed control"] },
+    { name: "Raspberry Pi 5", category: "Embedded & Firmware", projects: ["DalLegs"], appliedTo: ["Central control", "Computer vision", "ESP32 coordination"] },
+    { name: "FluidNC", category: "Embedded & Firmware", projects: ["DalLegs"], appliedTo: ["YAML configuration", "Two-rope navigation", "Web control"] },
+    { name: "MQTT", category: "Embedded & Firmware", projects: ["DalLegs"], appliedTo: ["Raspberry Pi–ESP32 messaging", "Control-system testing"] },
+    { name: "G-code", category: "Embedded & Firmware", projects: ["DalLegs"], appliedTo: ["Vertical-plane motion", "Navigation commands"] },
+    { name: "Arduino", image: "assets/arduino.png", category: "Embedded & Firmware", projects: ["DalLegs", "The Hive"], appliedTo: ["Sensor integration", "Prototype control", "Ultrasonic navigation"] },
+    { name: "C++", image: "assets/C++.png", category: "Embedded & Firmware", projects: ["DalLegs", "The Hive"], appliedTo: ["Embedded control logic", "Hardware integration"] },
+    { name: "Marlin", image: "assets/marlin.png", category: "Embedded & Firmware", projects: ["DalLegs"], appliedTo: ["Motion-control firmware", "Stepper coordination"] },
+
+    { name: "CST Studio", image: "assets/CST.png", category: "Electrical & Simulation", projects: ["Colonoscopy Antenna Design"], appliedTo: ["Antenna simulation", "S11 analysis", "Radiation patterns"] },
+    { name: "Power Budgeting", category: "Electrical & Simulation", projects: ["DalLegs", "The Hive"], appliedTo: ["Supply sizing", "Motor power planning", "Solar-PV integration"] },
+    { name: "Circuit Wiring", category: "Electrical & Simulation", projects: ["DalLegs", "The Hive"], appliedTo: ["System wiring", "Controller integration", "Hardware troubleshooting"] },
+    { name: "MATLAB", image: "assets/Matlab.png", category: "Electrical & Simulation", projects: ["The Hive"], appliedTo: ["Engineering calculations", "System analysis"] },
+    { name: "FEA / CFD", category: "Electrical & Simulation", projects: ["DalLegs"], appliedTo: ["Structural feasibility", "Stress and strain analysis", "Body integrity"] },
+
+    { name: "Fusion 360", image: "assets/fusion.png", category: "Mechanical & CAD", projects: ["DalLegs", "The Hive"], appliedTo: ["Mechanical CAD", "Engineering drawings", "Prototype assemblies"] },
+    { name: "3D Printing", category: "Mechanical & CAD", projects: ["DalLegs", "The Hive"], appliedTo: ["Rapid prototyping", "Replacement parts", "Material testing"] },
+
+    { name: "Python", image: "assets/python.png", category: "AI & Computer Vision", projects: ["DalLegs", "The Hive"], appliedTo: ["Vision pipeline", "Data processing", "Prototype tooling"] },
+    { name: "PyTorch", image: "assets/pytorch.png", category: "AI & Computer Vision", projects: ["DalLegs"], appliedTo: ["Model training", "Inference evaluation"] },
+    { name: "YOLO / OpenCV", category: "AI & Computer Vision", projects: ["DalLegs"], appliedTo: ["Dirt classification", "Camera inference", "Model validation"] },
+
+    { name: "HTML / CSS / JS", image: "assets/htmlcssjs.png", category: "Web & Data", projects: ["DalLegs"], appliedTo: ["Robot control interface", "Live system feedback"] },
+    { name: "VS Code", image: "assets/VSC.png", category: "Web & Data", projects: ["DalLegs", "The Hive"], appliedTo: ["Firmware development", "Web implementation"] },
+    { name: "Excel", image: "assets/excel.png", category: "Web & Data", projects: ["DalLegs"], appliedTo: ["Engineering calculations", "Project logistics", "Data organisation"] }
   ],
   experience: [
     {
       company: "Innowave Tech Pte Ltd",
-      period: "Aug 2025 - Jan 2025",
+      role: "Automation Engineer Intern",
+      period: "Aug 2025 - Jan 2026",
+      tools: ["Fusion 360", "Excel", "Word", "PowerPoint"],
+      outcomes: [
+        "Developed industry-standard replacement models for outsourced parts approaching end of life.",
+        "Worked with semiconductor stakeholders on robotic implementation requirements for cleanroom environments."
+      ],
       responsibilities: [
         "Assisted with system testing.",
         "Supported troubleshooting of hardware and wiring issues.",
@@ -69,6 +101,106 @@ const portfolio = {
       ]
     }
   ],
+  internationalCurriculum: [
+    {
+      code: "CN / SHA",
+      location: "Shanghai, China",
+      institution: "Shanghai Jiao Tong University (SJTU)",
+      period: "June 2024",
+      focus: "Cross-curricular exchange",
+      photos: [
+        { image: "assets/WUXIgroup.jpg", caption: "Shanghai cross-curricular exchange cohort" },
+        { image: "assets/WUXIinterview.jpg", caption: "User interviews with elderly-care staff" },
+        { image: "assets/WUXIpresentation.jpg", caption: "Portable MRI design presentation at SJTU" }
+      ],
+      completed: [
+        "Portable MRI design for the elderly",
+        "Interviewed elderly locals in Shanghai for user evaluation",
+        "Visited private and public elderly care homes to conduct preliminary research"
+      ]
+    },
+    {
+      code: "CN / WUX",
+      location: "Wuxi, China",
+      institution: "VEXU Robotics Competition",
+      period: "December 2024",
+      focus: "Asia Pacific VEX Robotics Competition",
+      photos: [
+        { image: "assets/VEXgroup.jpg", caption: "SUTD delegation at the VEX Robotics Asia Open" },
+        { image: "assets/VEXvenue.jpg", caption: "Wuxi competition venue" },
+        { image: "assets/VEXrobot.jpg", caption: "Competition robot after on-site maintenance" },
+        { image: "assets/VEXflag.jpg", caption: "International delegation ceremony" }
+      ],
+      completed: [
+        "3D printed broken parts on site for replacements",
+        "Managed part logistics"
+      ]
+    },
+    {
+      code: "TW / CGU",
+      location: "Taiwan",
+      institution: "Chang Gung University",
+      period: "Feb 2026 — Jul 2026",
+      focus: "International academic exchange",
+      photos: [
+        { image: "assets/CGUcampus.jpg", caption: "Chang Gung University campus" },
+        { image: "assets/ACDCconverter.jpg", caption: "AC/DC converter built during the exchange" }
+      ],
+      completed: [
+        "Power Electronics and Advanced Experiments — created an AC/DC converter",
+        "Introduction to Medical Electronics",
+        "Machine Learning — completed a project on YOLO versions",
+        "Economics (II)"
+      ]
+    }
+  ],
+  experienceGallery: [
+    {
+      image: "assets/WUXIgroup.jpg",
+      location: "Shanghai, China",
+      caption: "Cross-curricular exchange cohort during the Shanghai field programme."
+    },
+    {
+      image: "assets/WUXIinterview.jpg",
+      location: "Shanghai, China",
+      caption: "Interviewing local elderly-care staff for user evaluation and preliminary research."
+    },
+    {
+      image: "assets/WUXIpresentation.jpg",
+      location: "SJTU, Shanghai",
+      caption: "Presenting the portable MRI design developed for elderly users."
+    },
+    {
+      image: "assets/VEXgroup.jpg",
+      location: "Wuxi, China",
+      caption: "Representing SUTD at the Asia Pacific VEX Robotics Competition."
+    },
+    {
+      image: "assets/VEXvenue.jpg",
+      location: "Wuxi, China",
+      caption: "Competition floor before the VEX Robotics Asia Open Signature Event."
+    },
+    {
+      image: "assets/VEXrobot.jpg",
+      location: "Wuxi, China",
+      caption: "The competition robot on the field after on-site maintenance and part replacement."
+    },
+    {
+      image: "assets/VEXflag.jpg",
+      location: "Wuxi, China",
+      caption: "International delegation ceremony at the VEXU competition venue."
+    },
+    {
+      image: "assets/CGUcampus.jpg",
+      location: "Chang Gung University, Taiwan",
+      caption: "Campus life during the February–July 2026 academic exchange."
+    },
+    {
+      image: "assets/ACDCconverter.jpg",
+      location: "Chang Gung University, Taiwan",
+      caption: "AC/DC converter created for Power Electronics and Advanced Experiments."
+    }
+  ],
   projects: [
     {
       id: "dallegs",
@@ -78,16 +210,76 @@ const portfolio = {
         "A wall cleaning robot to automate the cleaning process in hard-to-reach areas of HDB flats.",
       fullDescription:
         "DalLegs is an innovative wall-climbing robot designed to clean hard-to-reach areas in HDB flats. It uses advanced adhesion technology and automated navigation to efficiently cover vertical surfaces.",
+      caseStudy: {
+        facts: [
+          { value: "8", label: "Team members" },
+          { value: "4 months", label: "Project duration" }
+        ],
+        role: [
+          "Owned firmware and electrical integration across the robotic system.",
+          "Configured FluidNC using YAML and generated G-code to navigate the robot across a vertical plane using two suspension ropes.",
+          "Implemented software control logic on physical hardware and coordinated communication between the Raspberry Pi 5 and ESP32 controllers.",
+          "Calculated the system power budget, selected suitable power delivery, and completed the electrical wiring."
+        ],
+        constraints: [
+          "Deliver reliable two-rope navigation across a vertical cleaning plane.",
+          "Navigate around façade protrusions of approximately 0.3 m.",
+          "Clean a 1 mm layer of peanut-butter test material from a concrete surface.",
+          "Limit water use to 5 L/min and clean a 1 m × 1 m area in under 20 minutes.",
+          "Reach ledge corners while applying approximately 0.5–5 N of brush pressure.",
+          "Retain at least 60% live-feed prediction accuracy for AI-assisted cleaning.",
+          "Produce a working prototype suitable for live demonstration to stakeholders.",
+          "Validate market demand and commercial viability alongside the engineering proof of concept."
+        ],
+        decisions: [
+          "Used a purpose-built two-rope winch system instead of a conventional gondola, reducing calculated torque demand and projected hardware cost.",
+          "Balanced cleaning throughput against water use by limiting flow to 5 L/min while targeting a 1 m × 1 m area in under 20 minutes.",
+          "Retained AI-assisted dirt classification to reduce dependence on operator judgement, accepting lower reliability while the training dataset remained limited.",
+          "Selected aluminium for water-jetted structural parts, PLA for rapid prototypes, brass standoffs and galvanised-steel winch hooks; nylon or TPU were identified for future tougher printed parts."
+        ],
+        testing: [
+          "Used finite-element analysis to evaluate displacement, stress and strain under calculated cable tension.",
+          "Modelled a 20 m anchor spacing, 1.5 m roof-to-winch height and 2 cm spool radius to estimate peak cable tension and motor torque.",
+          "Tested brush speed, water pressure and cleaning speed to identify effective operating conditions.",
+          "Compared AI-predicted dirt labels against manually assigned labels and calculated precision, recall, F1 and mAP metrics.",
+          "Validated navigation through web controls using FluidNC.",
+          "Tested MQTT communication between the Raspberry Pi 5 and ESP32 controllers on the rig."
+        ],
+        results: [
+          { value: "~1,300 N", label: "Calculated maximum cable tension" },
+          { value: "26 Nm", label: "Calculated winch torque requirement" },
+          { value: "SGD 270–810", label: "Estimated DalLegs system cost" },
+          { value: "63.6%", label: "Validation accuracy (7 of 11 samples)" },
+          { value: "0.835", label: "Highest AI precision" },
+          { value: "0.480", label: "Highest AI recall" },
+          { value: "0.511", label: "mAP@50 (mean Average Precision at 50% IoU)" },
+          { value: "0.332", label: "mAP@50–95" }
+        ],
+        outcome: [
+          "The full-scale feasibility study found that the proposed structure could withstand the calculated cable forces. The custom system required an estimated 26 Nm of winch torque, supported a 5–50 kg operating range, and had a projected cost of SGD 270–810 compared with SGD 4,000–8,000 for a conventional gondola winch.",
+          "The integrated prototype was presented in a live stakeholder showcase with navigation, cleaning, embedded control and AI-assisted dirt classification brought together as one system."
+        ],
+        iterations: [
+          "The largest limitation was the AI dataset. With only 11 validation samples and subjective dirt-class labels, the model over-predicted heavy and light classes and achieved 63.6% overall validation accuracy. The next iteration requires more balanced data, clearer labelling criteria and additional real-world samples."
+        ],
+        learnings: [
+          "A mechanically feasible system still requires validation across controls, cleaning performance, perception and communications—not only structural analysis.",
+          "The AI model over-predicted heavy and light dirt classes; class balance, larger datasets and more consistent labelling are necessary for reliable deployment.",
+          "The medium dirt class produced reliable predictions when detected but suffered low recall, showing why accuracy alone is not sufficient for evaluating the model.",
+          "Early quantitative comparison against commercial gondolas helped justify the custom architecture: 26 Nm calculated torque versus 80–200 Nm, and a substantially lower estimated cost."
+        ]
+      },
+      links: { demo: "", repository: "" },
       images: [
         "assets/DalLegsModel.png",
-        "assets/DallegsBody.png",
-        "assets/DallegsBrush.png",
-        "assets/DallegsArm.png",
+        "assets/DalLegsBody.png",
+        "assets/DalLegsBrush.png",
+        "assets/DalLegsArm.png",
         "assets/Web Interface.png",
-        "assets/circuitmng.jpg",
+        "assets/Circuitmng.jpg",
         "assets/showcase.jpg"
       ],
-      explodedView: "assets/DallegsBody.png",
+      explodedView: "assets/DalLegsBody.png",
       imageDescriptions: [
         "Main DalLegs Robot Model - The complete assembled robot showing the integrated adhesion system and cleaning mechanism",
         "Robot Body - The main chassis of the robot, designed to house the microcontroller and other electronic components",
@@ -135,6 +327,28 @@ const portfolio = {
         "A prototype of a self deploying solar farm using swarm system to provide energy to remote areas.",
       fullDescription:
         "The Hive is a swarm robotics project that deploys solar panels autonomously. Each unit communicates with others to optimize coverage and energy generation in remote areas.",
+      caseStudy: {
+        facts: [
+          { value: "5", label: "Team members" },
+          { value: "1 month", label: "Project duration" }
+        ],
+        role: [
+          "Led solar-PV integration and system wiring.",
+          "Coordinated project delivery across the team and produced supporting media and presentation materials."
+        ],
+        constraints: [
+          "Deliver a functional proof of concept supported by engineering calculations.",
+          "Demonstrate compact storage and reliable expansion of the flasher-fold origami mechanism."
+        ],
+        decisions: [],
+        testing: [
+          "Tested analogue-controller navigation supported by ultrasonic sensing.",
+          "Evaluated mechanism movement and expansion behaviour of the flasher-fold origami structure."
+        ],
+        results: [],
+        learnings: []
+      },
+      links: { demo: "", repository: "" },
       images: [
         "assets/Solar.png",
         "assets/Origami.png",
@@ -186,22 +400,66 @@ const portfolio = {
         "A miniaturised antenna designed to fit within a swallowable pill for colonoscopy applications.",
       fullDescription:
         "This project explores the electromagnetic design and miniaturisation of an ingestible antenna. The antenna is dimensioned to fit within a pill-sized capsule while supporting wireless communication from inside the human body.",
-      images: ["assets/CST.png"],
-      explodedView: "assets/CST.png",
-      imageDescriptions: [
-        "CST Studio Suite was used to model and evaluate the miniaturised ingestible antenna design."
+      caseStudy: {
+        facts: [
+          { value: "4", label: "Team members" },
+          { value: "1 month", label: "Project duration" },
+          { value: "26 × 11 mm", label: "Antenna envelope" },
+          { value: "900 MHz", label: "Target frequency" }
+        ],
+        role: [
+          "Led antenna design and electromagnetic simulation work.",
+          "Produced supporting media and technical presentation materials."
+        ],
+        constraints: [
+          "Fit the antenna within a 26 mm × 11 mm swallowable capsule envelope.",
+          "Limit tissue heating while maintaining useful in-body wireless performance.",
+          "Target operation around 900 MHz."
+        ],
+        decisions: [
+          "Developed and evaluated a helical antenna curved into a cylindrical form to use the limited capsule volume efficiently."
+        ],
+        testing: [
+          "Simulated antenna gain, return loss and radiation behaviour in CST Studio Suite."
+        ],
+        results: [
+          { value: "−8.1 dB", label: "Simulated S11 / return loss" },
+          { value: "15%", label: "Reflected power at the stated S11" },
+          { value: "1.15 dBi", label: "Simulated gain" },
+          { value: "907.57 MHz", label: "Measured VNA marker frequency" },
+          { value: "−10.05 dB", label: "Measured S11 at the marker" }
+        ],
+        resultImages: [
+          {
+            image: "assets/Antennameasure.png",
+            title: "Measured S11 response",
+            caption: "VNA measurement from 100 kHz to 3 GHz, with marker M1 at 907.57 MHz and −10.05 dB."
+          }
+        ],
+        learnings: []
+      },
+      links: { demo: "", repository: "" },
+      images: [
+        "assets/Antenna.png",
+        "assets/Circularpolarisation.png",
+        "assets/Circularpolarisation2.png",
+        "assets/Antennameasure.png"
       ],
-      poster: "",
-      canvaLink: "",
-      paperLink: "",
+      imageDescriptions: [
+        "CST model of the miniaturised antenna geometry.",
+        "Simulated circular-polarisation result from CST Studio Suite.",
+        "Additional circular-polarisation simulation used to evaluate antenna behaviour.",
+        "Vector-network-analyser S11 measurement with marker M1 at 907.57 MHz and approximately −10.05 dB."
+      ],
+      poster: "assets/AntennaPoster.pdf",
       technologies: {
         languages: [],
-        software: ["CST Studio Suite", "Electromagnetic Simulation"]
+        software: ["CST Studio Suite", "Canva"]
       },
       components: [
         {
-          name: "Miniaturised Antenna",
-          description: "A compact radiating element constrained by the dimensions of a swallowable capsule."
+          name: "Double Helical Structure",
+          description: "A compact radiating element constrained by the dimensions of a swallowable capsule provides circular polarization with low return loss."
         },
         {
           name: "In-body Communication",
@@ -215,14 +473,71 @@ const portfolio = {
 document.documentElement.style.setProperty("--mx", "50%");
 document.documentElement.style.setProperty("--my", "50%");
 const cadCursor = document.querySelector(".cad-cursor");
+const cadCoordinateHud = document.querySelector(".cad-coordinate-hud");
+const cadSelectionBox = document.querySelector(".cad-selection-box");
+let cadSelectionStart = null;
+let cadSelectionFadeTimer = null;
+
+function isSelectableCadBackground(target) {
+  return target.matches("body, .page-shell, .hero, .glass-section, .experience-hero, .tabs-section, .skills-workspace");
+}
+
+function drawCadSelection(clientX, clientY) {
+  if (!cadSelectionStart || !cadSelectionBox) return;
+
+  const left = Math.min(cadSelectionStart.x, clientX);
+  const top = Math.min(cadSelectionStart.y, clientY);
+  const width = Math.abs(clientX - cadSelectionStart.x);
+  const height = Math.abs(clientY - cadSelectionStart.y);
+  cadSelectionBox.style.setProperty("--selection-left", `${left}px`);
+  cadSelectionBox.style.setProperty("--selection-top", `${top}px`);
+  cadSelectionBox.style.setProperty("--selection-width", `${width}px`);
+  cadSelectionBox.style.setProperty("--selection-height", `${height}px`);
+  cadSelectionBox.querySelector("span").textContent = `${Math.round(width)} x ${Math.round(height)}`;
+}
+
+window.addEventListener("pointerdown", (event) => {
+  if (event.button !== 0 || event.pointerType === "touch" || !cadSelectionBox || !isSelectableCadBackground(event.target)) return;
+
+  window.clearTimeout(cadSelectionFadeTimer);
+  cadSelectionStart = { x: event.clientX, y: event.clientY };
+  cadSelectionBox.classList.remove("is-complete");
+  cadSelectionBox.classList.add("is-active");
+  drawCadSelection(event.clientX, event.clientY);
+});
 
 window.addEventListener("pointermove", (event) => {
+  const snapSize = 24;
+  const snappedX = Math.round(event.clientX / snapSize) * snapSize;
+  const snappedY = Math.round(event.clientY / snapSize) * snapSize;
+  document.documentElement.style.setProperty("--cad-snap-x", `${snappedX}px`);
+  document.documentElement.style.setProperty("--cad-snap-y", `${snappedY}px`);
+
+  if (cadCoordinateHud) {
+    cadCoordinateHud.children[0].textContent = `X ${String(snappedX).padStart(4, "0")}`;
+    cadCoordinateHud.children[1].textContent = `Y ${String(snappedY).padStart(4, "0")}`;
+  }
+
   if (cadCursor) {
     cadCursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
     cadCursor.classList.toggle("is-interactive", Boolean(event.target.closest("a, button, .featured-image-container")));
     cadCursor.classList.add("is-active");
   }
+
+  drawCadSelection(event.clientX, event.clientY);
 });
+
+function finishCadSelection() {
+  if (!cadSelectionStart || !cadSelectionBox) return;
+
+  cadSelectionStart = null;
+  cadSelectionBox.classList.remove("is-active");
+  cadSelectionBox.classList.add("is-complete");
+  cadSelectionFadeTimer = window.setTimeout(() => cadSelectionBox.classList.remove("is-complete"), 420);
+}
+
+window.addEventListener("pointerup", finishCadSelection);
+window.addEventListener("pointercancel", finishCadSelection);
 
 document.documentElement.addEventListener("pointerleave", () => {
   cadCursor?.classList.remove("is-active");
@@ -230,6 +545,88 @@ document.documentElement.addEventListener("pointerleave", () => {
 
 document.getElementById("name").textContent = portfolio.name;
 document.getElementById("summary").textContent = portfolio.summary;
+
+const roleTypewriterText = document.getElementById("role-typewriter-text");
+const rolePhrase = "Electrical Engineer / Minor in AI";
+
+if (roleTypewriterText) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    roleTypewriterText.textContent = rolePhrase;
+  } else {
+    let roleCharacterIndex = 0;
+    let roleIsDeleting = false;
+
+    function animateRoleTypewriter() {
+      roleTypewriterText.textContent = rolePhrase.slice(0, roleCharacterIndex);
+
+      if (!roleIsDeleting && roleCharacterIndex < rolePhrase.length) {
+        roleCharacterIndex += 1;
+        window.setTimeout(animateRoleTypewriter, 72);
+      } else if (!roleIsDeleting) {
+        roleIsDeleting = true;
+        window.setTimeout(animateRoleTypewriter, 1700);
+      } else if (roleCharacterIndex > 0) {
+        roleCharacterIndex -= 1;
+        window.setTimeout(animateRoleTypewriter, 38);
+      } else {
+        roleIsDeleting = false;
+        window.setTimeout(animateRoleTypewriter, 520);
+      }
+    }
+
+    animateRoleTypewriter();
+  }
+}
+
+const themeSwitch = document.querySelector(".theme-switch");
+
+function applyTheme(isLight) {
+  document.body.classList.toggle("light-mode", isLight);
+  themeSwitch?.setAttribute("aria-checked", String(isLight));
+  themeSwitch?.setAttribute("aria-label", isLight ? "Turn off light mode" : "Turn on light mode");
+}
+
+let savedLightMode = false;
+try {
+  savedLightMode = localStorage.getItem("portfolio-theme") === "light";
+} catch (error) {
+  savedLightMode = false;
+}
+applyTheme(savedLightMode);
+
+themeSwitch?.addEventListener("click", () => {
+  const isLight = !document.body.classList.contains("light-mode");
+  applyTheme(isLight);
+  try {
+    localStorage.setItem("portfolio-theme", isLight ? "light" : "dark");
+  } catch (error) {
+    // The switch still works when browser storage is unavailable.
+  }
+});
+
+const contactLinks = document.getElementById("contact-links");
+const contactDefinitions = [
+  { key: "email", label: "Email", href: (value) => `mailto:${value}` },
+  { key: "linkedin", label: "LinkedIn", href: (value) => value },
+  { key: "github", label: "GitHub", href: (value) => value },
+  { key: "resume", label: "Resume", href: (value) => value }
+];
+
+contactLinks.innerHTML = contactDefinitions.map((item) => {
+  const value = portfolio.contact[item.key];
+  if (!value) {
+    return "";
+  }
+
+  const displayValue = item.key === "email" ? value : `Open ${item.label}`;
+  return `
+    <a class="contact-link" href="${item.href(value)}" ${item.key === "email" ? "" : 'target="_blank" rel="noopener noreferrer"'}>
+      <small>${item.label}</small>
+      <strong>${displayValue}</strong>
+      <span aria-hidden="true">&nearr;</span>
+    </a>
+  `;
+}).join("");
 
 const statsDashboard = document.getElementById("stats-dashboard");
 portfolio.statistics.forEach((stat, index) => {
@@ -262,24 +659,76 @@ portfolio.statistics.forEach((stat, index) => {
 const qualificationsList = document.getElementById("qualifications-list");
 portfolio.qualifications.forEach((item) => {
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = "education-node";
   card.innerHTML = `
+    <span class="education-node-pin" aria-hidden="true"><i></i></span>
+    <time>${item.date}</time>
     <h3>${item.title}</h3>
     <p>${item.detail}</p>
   `;
   qualificationsList.appendChild(card);
 });
 
-const skillsCloud = document.getElementById("skills-cloud");
+const skillsWorkspace = document.getElementById("skills-workspace");
+const skillCategories = [
+  "Embedded & Firmware",
+  "Electrical & Simulation",
+  "Mechanical & CAD",
+  "AI & Computer Vision",
+  "Web & Data"
+];
+const categoryCodes = {
+  "Embedded & Firmware": "CTRL-01",
+  "Electrical & Simulation": "ELEC-02",
+  "Mechanical & CAD": "MECH-03",
+  "AI & Computer Vision": "VISN-04",
+  "Web & Data": "DATA-05"
+};
+
+skillCategories.forEach((category) => {
+  const tank = document.createElement("section");
+  tank.className = "category-tank";
+  tank.dataset.category = category;
+  tank.innerHTML = `
+    <div class="category-tank-header">
+      <span>${categoryCodes[category]}</span>
+      <h3>${category}</h3>
+      <small>${portfolio.skills.filter((skill) => skill.category === category).length} tools</small>
+    </div>
+    <div class="category-tank-surface">
+      <div class="tank-water"></div>
+      <div class="category-origin" aria-hidden="true"><i></i><span>0,0</span></div>
+      <div class="skills-cloud" data-skill-category="${category}"></div>
+    </div>
+  `;
+  skillsWorkspace.appendChild(tank);
+});
+
 portfolio.skills.forEach((skill, index) => {
+  const skillsCloud = skillsWorkspace.querySelector(`[data-skill-category="${skill.category}"]`);
+  const categorySkills = portfolio.skills.filter((item) => item.category === skill.category);
+  const categoryIndex = categorySkills.indexOf(skill);
+  const columns = Math.min(3, Math.ceil(Math.sqrt(categorySkills.length)));
+  const rows = Math.ceil(categorySkills.length / columns);
+  const column = categoryIndex % columns;
+  const row = Math.floor(categoryIndex / columns);
   const bubble = document.createElement("button");
   bubble.type = "button";
   bubble.className = "skill-bubble";
-  bubble.innerHTML = `<img src="${skill.image}" alt="${skill.name}" /><span>${skill.name}</span>`;
-  bubble.style.left = `${15 + Math.random() * 70}%`;
-  bubble.style.top = `${18 + Math.random() * 64}%`;
+  const initials = skill.name.split(/[\s/&]+/).filter(Boolean).slice(0, 2).map((word) => word[0]).join("");
+  bubble.innerHTML = `${skill.image
+    ? `<img src="${skill.image}" alt="" />`
+    : `<span class="skill-monogram" aria-hidden="true">${initials}</span>`
+  }<span class="skill-name">${skill.name}</span>`;
+
+  const x = 12 + 76 * ((column + 0.5) / Math.min(columns, categorySkills.length));
+  const y = 16 + 68 * ((row + 0.5) / rows);
+
+  bubble.style.left = `${x}%`;
+  bubble.style.top = `${y}%`;
   bubble.style.setProperty("--delay", `${(index % 4) * 0.2}s`);
   bubble.dataset.skillIndex = index;
+  bubble.dataset.category = skill.category;
   bubble.title = `${skill.name} used in: ${skill.projects.join(", ")}`;
   skillsCloud.appendChild(bubble);
 });
@@ -287,31 +736,46 @@ portfolio.skills.forEach((skill, index) => {
 const skillDetailPanel = document.createElement("aside");
 skillDetailPanel.className = "skill-detail-panel";
 skillDetailPanel.setAttribute("aria-live", "polite");
-skillsCloud.appendChild(skillDetailPanel);
+skillsWorkspace.appendChild(skillDetailPanel);
 
 function showSkillProjects(skillIndex) {
   const skill = portfolio.skills[skillIndex];
   if (!skill) return;
 
-  skillsCloud.querySelectorAll(".skill-bubble").forEach((bubble) => {
+  skillsWorkspace.querySelectorAll(".skill-bubble").forEach((bubble) => {
     bubble.classList.toggle("is-selected", Number(bubble.dataset.skillIndex) === skillIndex);
   });
 
   skillDetailPanel.innerHTML = `
     <button type="button" class="skill-detail-close" aria-label="Close skill details">&times;</button>
+    <p class="skill-detail-category">${skill.category}</p>
     <h3>${skill.name}</h3>
-    <p class="skill-detail-kicker">Used in</p>
-    <ul>${skill.projects.map((project) => `<li>${project}</li>`).join("")}</ul>
+    <p class="skill-detail-kicker">Applied to</p>
+    <ul class="skill-application-list">${skill.appliedTo.map((application) => `<li>${application}</li>`).join("")}</ul>
+    <p class="skill-detail-kicker skill-projects-label">Used in</p>
+    <div class="skill-project-links">${skill.projects.map((project) => `<button type="button" data-project-name="${project}">${project}<span aria-hidden="true">&nearr;</span></button>`).join("")}</div>
   `;
   skillDetailPanel.classList.add("is-visible");
 
+  skillDetailPanel.querySelectorAll("[data-project-name]").forEach((projectButton) => {
+    projectButton.addEventListener("click", () => {
+      const project = portfolio.projects.find((item) => item.name === projectButton.dataset.projectName);
+      if (!project) return;
+      tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.section === "projects"));
+      renderProjects();
+      document.getElementById("work").scrollIntoView({ behavior: "smooth", block: "start" });
+      window.setTimeout(() => showProjectModal(project), 350);
+    });
+  });
+
   skillDetailPanel.querySelector(".skill-detail-close").addEventListener("click", () => {
     skillDetailPanel.classList.remove("is-visible");
-    skillsCloud.querySelectorAll(".skill-bubble").forEach((bubble) => bubble.classList.remove("is-selected"));
+    skillsWorkspace.querySelectorAll(".skill-bubble").forEach((bubble) => bubble.classList.remove("is-selected"));
   });
 }
 
 let activeBubble = null;
+let activeSkillsCloud = null;
 let bubbleDragStart = null;
 let bubbleWasDragged = false;
 
@@ -324,7 +788,7 @@ function setBubblePosition(bubble, xPercent, yPercent) {
   bubble.style.top = `${clamp(yPercent, 18, 82)}%`;
 }
 
-function resolveBubbleCollisions(draggedBubble) {
+function resolveBubbleCollisions(draggedBubble, skillsCloud) {
   const cloudRect = skillsCloud.getBoundingClientRect();
   const bubbles = [...skillsCloud.querySelectorAll(".skill-bubble")];
 
@@ -366,21 +830,27 @@ function resolveBubbleCollisions(draggedBubble) {
   }
 }
 
-skillsCloud.addEventListener("pointerdown", (event) => {
+skillsWorkspace.addEventListener("pointerdown", (event) => {
   const bubble = event.target.closest(".skill-bubble");
   if (!bubble) {
+    return;
+  }
+
+  if (window.matchMedia("(pointer: coarse), (max-width: 720px)").matches) {
+    showSkillProjects(Number(bubble.dataset.skillIndex));
     return;
   }
 
   event.preventDefault();
   bubble.classList.add("is-dragging");
   activeBubble = bubble;
+  activeSkillsCloud = bubble.closest(".skills-cloud");
   bubbleDragStart = { x: event.clientX, y: event.clientY };
   bubbleWasDragged = false;
   bubble.setPointerCapture(event.pointerId);
 });
 
-skillsCloud.addEventListener("pointermove", (event) => {
+skillsWorkspace.addEventListener("pointermove", (event) => {
   if (!activeBubble) {
     return;
   }
@@ -389,11 +859,11 @@ skillsCloud.addEventListener("pointermove", (event) => {
     bubbleWasDragged = true;
   }
 
-  const rect = skillsCloud.getBoundingClientRect();
+  const rect = activeSkillsCloud.getBoundingClientRect();
   const xPercent = ((event.clientX - rect.left) / rect.width) * 100;
   const yPercent = ((event.clientY - rect.top) / rect.height) * 100;
   setBubblePosition(activeBubble, xPercent, yPercent);
-  resolveBubbleCollisions(activeBubble);
+  resolveBubbleCollisions(activeBubble, activeSkillsCloud);
 });
 
 function releaseBubble(event) {
@@ -405,6 +875,7 @@ function releaseBubble(event) {
   releasedBubble.classList.remove("is-dragging");
   releasedBubble.releasePointerCapture(event.pointerId);
   activeBubble = null;
+  activeSkillsCloud = null;
   bubbleDragStart = null;
 
   if (!bubbleWasDragged && event.type === "pointerup") {
@@ -412,11 +883,12 @@ function releaseBubble(event) {
   }
 }
 
-skillsCloud.addEventListener("pointerup", releaseBubble);
-skillsCloud.addEventListener("pointercancel", releaseBubble);
+skillsWorkspace.addEventListener("pointerup", releaseBubble);
+skillsWorkspace.addEventListener("pointercancel", releaseBubble);
 
 const revealSections = document.querySelectorAll(".reveal-section");
 const exposureHeading = document.querySelector(".experience-hero h2[data-typewriter]");
+const educationHeading = document.querySelector("#education h2[data-typewriter]");
 let lastScrollY = window.scrollY;
 let ticking = false;
 
@@ -437,11 +909,34 @@ function updateExposureTypewriter() {
 
   const startLine = window.innerHeight * 0.82;
   const endLine = window.innerHeight * 0.4;
-  const progress = clamp((startLine - rect.top) / (startLine - endLine), 0, 1);
+  const exitStartLine = window.innerHeight * 0.6;
+  const exitEndLine = window.innerHeight * 0.18;
+  const enterProgress = clamp((startLine - rect.top) / (startLine - endLine), 0, 1);
+  const exitProgress = clamp((rect.bottom - exitEndLine) / (exitStartLine - exitEndLine), 0, 1);
+  const progress = Math.min(enterProgress, exitProgress);
   const visibleCharacters = Math.round(progress * fullText.length);
 
   exposureHeading.textContent = fullText.slice(0, visibleCharacters);
   exposureHeading.style.setProperty("--type-progress", progress.toFixed(3));
+}
+
+function updateEducationTypewriter() {
+  if (!educationHeading) return;
+
+  const fullText = educationHeading.dataset.typewriter;
+  const rect = educationHeading.closest(".education-section").getBoundingClientRect();
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    educationHeading.textContent = fullText;
+    educationHeading.style.setProperty("--type-progress", "1");
+    return;
+  }
+
+  const enterProgress = clamp((window.innerHeight * 0.9 - rect.top) / (window.innerHeight * 0.34), 0, 1);
+  const exitProgress = clamp((rect.bottom - window.innerHeight * 0.12) / (window.innerHeight * 0.3), 0, 1);
+  const progress = Math.min(enterProgress, exitProgress);
+  educationHeading.textContent = fullText.slice(0, Math.round(progress * fullText.length));
+  educationHeading.style.setProperty("--type-progress", progress.toFixed(3));
 }
 
 function updateRevealSections() {
@@ -461,6 +956,7 @@ function updateRevealSections() {
   });
 
   updateExposureTypewriter();
+  updateEducationTypewriter();
 }
 
 window.addEventListener(
@@ -479,8 +975,112 @@ window.addEventListener(
 
 updateRevealSections();
 
+const navigationLinks = [...document.querySelectorAll(".site-nav a[href^='#']")];
+const navigationSections = navigationLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+if ("IntersectionObserver" in window) {
+  const navigationObserver = new IntersectionObserver((entries) => {
+    const visibleEntry = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visibleEntry) return;
+
+    navigationLinks.forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === `#${visibleEntry.target.id}`);
+    });
+  }, { rootMargin: "-28% 0px -58%", threshold: [0, 0.1, 0.25, 0.5] });
+
+  navigationSections.forEach((section) => navigationObserver.observe(section));
+}
+
 const contentArea = document.getElementById("content-area");
 const tabs = document.querySelectorAll(".tab");
+
+function initialiseCurriculumTape(section) {
+  const viewport = section.querySelector(".curriculum-banner-list");
+  const track = section.querySelector(".curriculum-track");
+  const firstSet = section.querySelector(".curriculum-set");
+  if (!viewport || !track || !firstSet || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let offset = 0;
+  let previousTime = performance.now();
+  let isHovered = false;
+  let isDragging = false;
+  let dragStartX = 0;
+  let lastDragX = 0;
+  let dragDistance = 0;
+  const speed = 34;
+
+  function wrapOffset() {
+    const setWidth = firstSet.offsetWidth;
+    if (!setWidth) return;
+    while (offset <= -setWidth) offset += setWidth;
+    while (offset > 0) offset -= setWidth;
+  }
+
+  function animateTape(time) {
+    if (!track.isConnected) return;
+    const elapsed = Math.min((time - previousTime) / 1000, 0.05);
+    previousTime = time;
+
+    if (!isHovered && !isDragging) {
+      offset -= speed * elapsed;
+      wrapOffset();
+    }
+
+    track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    window.requestAnimationFrame(animateTape);
+  }
+
+  viewport.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    isDragging = true;
+    dragStartX = event.clientX;
+    lastDragX = event.clientX;
+    dragDistance = 0;
+    viewport.classList.add("is-dragging");
+  });
+
+  viewport.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+    const movement = event.clientX - lastDragX;
+    dragDistance = Math.max(dragDistance, Math.abs(event.clientX - dragStartX));
+
+    if (dragDistance > 5 && !viewport.hasPointerCapture(event.pointerId)) {
+      viewport.setPointerCapture(event.pointerId);
+    }
+
+    offset += movement;
+    lastDragX = event.clientX;
+    wrapOffset();
+  });
+
+  function finishTapeDrag(event) {
+    if (!isDragging) return;
+    isDragging = false;
+    viewport.classList.remove("is-dragging");
+    if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+  }
+
+  viewport.addEventListener("pointerup", finishTapeDrag);
+  viewport.addEventListener("pointercancel", finishTapeDrag);
+  window.addEventListener("pointerup", finishTapeDrag);
+  viewport.addEventListener("mouseenter", () => { isHovered = true; });
+  viewport.addEventListener("mouseleave", () => { isHovered = false; });
+  viewport.addEventListener("focusin", () => { isHovered = true; });
+  viewport.addEventListener("focusout", () => { isHovered = false; });
+  viewport.addEventListener("click", (event) => {
+    if (dragDistance > 5) {
+      event.preventDefault();
+      event.stopPropagation();
+      dragDistance = 0;
+    }
+  }, true);
+
+  window.requestAnimationFrame(animateTape);
+}
 
 function renderExperience() {
   contentArea.innerHTML = '<div class="content-list experience-list"></div>';
@@ -494,10 +1094,75 @@ function renderExperience() {
     card.innerHTML = `
       <span class="showcase-index">${String(list.children.length + 1).padStart(2, "0")}</span>
       <h3>${item.company}</h3>
+      ${item.role ? `<p class="experience-role">${item.role}</p>` : ""}
       <p class="meta">${item.period}</p>
       <ul>${bullets}</ul>
+      ${item.outcomes?.length ? `
+        <div class="experience-outcomes">
+          <span>Selected outcomes</span>
+          <ul>${item.outcomes.map((outcome) => `<li>${outcome}</li>`).join("")}</ul>
+        </div>
+      ` : ""}
+      ${item.tools?.length ? `<div class="experience-tools">${item.tools.map((tool) => `<span>${tool}</span>`).join("")}</div>` : ""}
     `;
     list.appendChild(card);
+  });
+
+  const curriculumBanners = portfolio.internationalCurriculum.map((item, index) => `
+    <article class="curriculum-banner curriculum-banner-${index + 1}">
+      <div class="curriculum-code">
+        <span>${String(index + 1).padStart(2, "0")}</span>
+        <strong>${item.code}</strong>
+      </div>
+      <div class="curriculum-main">
+        <p class="curriculum-location">${item.location}</p>
+        <h4>${item.institution}</h4>
+        <p>${item.focus}</p>
+      </div>
+      <p class="curriculum-period">${item.period}</p>
+      <div class="curriculum-photos">
+        ${item.photos.map((photo, photoIndex) => `
+          <button type="button" class="curriculum-photo" data-curriculum-index="${index}" data-photo-index="${photoIndex}" aria-label="View photo: ${photo.caption}">
+            <img src="${photo.image}" alt="${photo.caption}" loading="lazy" />
+            <span>${String(photoIndex + 1).padStart(2, "0")}</span>
+          </button>
+        `).join("")}
+      </div>
+      ${item.completed.length ? `
+        <div class="curriculum-courses">
+          <span>Completed</span>
+          <ul>${item.completed.map((course) => `<li>${course}</li>`).join("")}</ul>
+        </div>
+      ` : ""}
+    </article>
+  `).join("");
+
+  const curriculumSection = document.createElement("section");
+  curriculumSection.className = "international-curriculum";
+  curriculumSection.innerHTML = `
+    <div class="curriculum-heading">
+      <p class="eyebrow">International Curriculum</p>
+      <div class="curriculum-heading-copy">
+        <h3>Engineering beyond borders.</h3>
+        <p>Hover over the panels to pause the rolling tape.</p>
+      </div>
+    </div>
+    <div class="curriculum-banner-list">
+      <div class="curriculum-track">
+        <div class="curriculum-set">${curriculumBanners}</div>
+        <div class="curriculum-set" aria-hidden="true" inert>${curriculumBanners}</div>
+      </div>
+    </div>
+  `;
+  contentArea.appendChild(curriculumSection);
+  initialiseCurriculumTape(curriculumSection);
+
+  curriculumSection.querySelectorAll(".curriculum-photo").forEach((photoButton) => {
+    photoButton.addEventListener("click", () => {
+      const curriculum = portfolio.internationalCurriculum[Number(photoButton.dataset.curriculumIndex)];
+      const photo = curriculum.photos[Number(photoButton.dataset.photoIndex)];
+      showImageViewer(photo.image, `${curriculum.location} — ${photo.caption}`);
+    });
   });
 }
 
@@ -562,6 +1227,82 @@ function renderProjects() {
   });
 }
 
+function renderEvidenceList(title, items, className = "") {
+  if (!items?.length) return "";
+  return `
+    <section class="case-study-block ${className}">
+      <p class="case-study-label">${title}</p>
+      <ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>
+    </section>
+  `;
+}
+
+function renderProjectEvidence(project) {
+  const study = project.caseStudy;
+  if (!study) return "";
+
+  const resultsHTML = study.results?.length
+    ? `
+      <section class="case-study-block case-study-results">
+        <p class="case-study-label">Results & evidence</p>
+        <div class="result-grid">
+          ${study.results.map((result) => typeof result === "string"
+            ? `<div class="result-card"><p>${result}</p></div>`
+            : `<div class="result-card"><strong>${result.value}</strong><p>${result.label}</p></div>`
+          ).join("")}
+        </div>
+      </section>
+    `
+    : "";
+
+  const resultImagesHTML = study.resultImages?.length
+    ? `
+      <section class="case-study-block case-study-result-images">
+        <p class="case-study-label">Measurement evidence</p>
+        <div class="result-image-grid">
+          ${study.resultImages.map((result) => `
+            <figure class="result-figure">
+              <a href="${result.image}" target="_blank" rel="noopener noreferrer" aria-label="Open ${result.title} at full size">
+                <img src="${result.image}" alt="${result.title}" />
+              </a>
+              <figcaption>
+                <strong>${result.title}</strong>
+                <span>${result.caption}</span>
+              </figcaption>
+            </figure>
+          `).join("")}
+        </div>
+      </section>
+    `
+    : "";
+
+  const factsHTML = study.facts?.length
+    ? `
+      <div class="case-study-facts">
+        ${study.facts.map((fact) => `
+          <div><strong>${fact.value}</strong><span>${fact.label}</span></div>
+        `).join("")}
+      </div>
+    `
+    : "";
+
+  const content = [
+    renderEvidenceList("My role", study.role),
+    renderEvidenceList("Constraints & requirements", study.constraints),
+    renderEvidenceList("Engineering decisions & trade-offs", study.decisions),
+    renderEvidenceList("Testing & validation", study.testing),
+    resultsHTML,
+    resultImagesHTML,
+    renderEvidenceList("Final outcome", study.outcome),
+    renderEvidenceList("Biggest failure & iteration", study.iterations),
+    renderEvidenceList("What I learned", study.learnings)
+  ].join("");
+
+  return content || factsHTML
+    ? `<div class="case-study-section"><h3>Engineering Case Study</h3>${factsHTML}<div class="case-study-grid">${content}</div></div>`
+    : "";
+}
+
 function showProjectModal(project) {
   const modal = document.createElement("div");
   modal.className = "project-modal";
@@ -577,21 +1318,45 @@ function showProjectModal(project) {
     const software = project.technologies.software
       .map((soft) => `<span class="tech-tag">${soft}</span>`)
       .join("");
+    const firmware = (project.technologies.firmware || [])
+      .map((item) => `<span class="tech-tag">${item}</span>`)
+      .join("");
+
+    const languageCategory = languages ? `
+      <div class="tech-category">
+        <h4>Languages</h4>
+        <div class="tech-tags">${languages}</div>
+      </div>
+    ` : "";
+    const softwareCategory = software ? `
+      <div class="tech-category">
+        <h4>Software & Tools</h4>
+        <div class="tech-tags">${software}</div>
+      </div>
+    ` : "";
+    const firmwareCategory = firmware ? `
+      <div class="tech-category">
+        <h4>Firmware & Hardware</h4>
+        <div class="tech-tags">${firmware}</div>
+      </div>
+    ` : "";
 
     technologiesHTML = `
       <div class="technologies-section">
         <h3>Technologies Used</h3>
-        <div class="tech-category">
-          <h4>Languages</h4>
-          <div class="tech-tags">${languages}</div>
-        </div>
-        <div class="tech-category">
-          <h4>Software & Tools</h4>
-          <div class="tech-tags">${software}</div>
-        </div>
+        ${languageCategory}
+        ${softwareCategory}
+        ${firmwareCategory}
       </div>
     `;
   }
+
+  const projectLinks = [
+    project.links?.demo ? `<a class="project-resource-link" href="${project.links.demo}" target="_blank" rel="noopener noreferrer">Watch demo <span aria-hidden="true">&nearr;</span></a>` : "",
+    project.links?.repository ? `<a class="project-resource-link" href="${project.links.repository}" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">&nearr;</span></a>` : ""
+  ].filter(Boolean).join("");
+  const projectLinksHTML = projectLinks ? `<div class="project-resource-links">${projectLinks}</div>` : "";
+  const projectEvidenceHTML = renderProjectEvidence(project);
 
   let componentsHTML = "";
   if (project.components) {
@@ -645,6 +1410,8 @@ function showProjectModal(project) {
         <p><strong>Overview:</strong> ${project.description}</p>
         <p>${project.fullDescription}</p>
       </div>
+      ${projectLinksHTML}
+      ${projectEvidenceHTML}
       ${technologiesHTML}
       ${componentsHTML}
       ${galleryHTML}
