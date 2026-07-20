@@ -4782,31 +4782,6 @@ body.light-mode .education-specialisation.education-ai {
   background: rgba(190, 137, 20, 0.1);
 }
 
-/* Compact curriculum tape expands to full detail on deliberate hover/focus. */
-@media (hover: hover) and (pointer: fine) {
-  .curriculum-banner-list {
-    max-height: 330px;
-    transition: max-height 0.7s cubic-bezier(0.2, 0.78, 0.2, 1), border-color 0.35s ease;
-  }
-
-  .curriculum-banner {
-    transform: scale(0.88);
-    transform-origin: center top;
-    transition: transform 0.65s cubic-bezier(0.2, 0.78, 0.2, 1), box-shadow 0.35s ease;
-  }
-
-  .curriculum-banner-list:hover,
-  .curriculum-banner-list:focus-within {
-    max-height: 680px;
-    border-color: rgba(138, 240, 180, 0.5);
-  }
-
-  .curriculum-banner-list:hover .curriculum-banner,
-  .curriculum-banner-list:focus-within .curriculum-banner {
-    transform: scale(1);
-  }
-}
-
 @media (max-width: 720px) {
   .tabs-section .content-list.projects-list {
     gap: 22px;
@@ -4815,4 +4790,751 @@ body.light-mode .education-specialisation.education-ai {
   .tabs-section .projects-list .showcase-card:nth-child(even) {
     margin-top: 0;
   }
+}
+
+/* Large scroll-linked CAD labels for the education and skills systems. */
+.education-section h2[data-typewriter],
+#skills h2[data-typewriter] {
+  font-size: clamp(2.4rem, 5.6vw, 5.2rem);
+  line-height: 0.96;
+}
+
+#skills h2[data-typewriter] {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 1.05em;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+#skills h2[data-typewriter]::after {
+  content: "";
+  flex: 0 0 0.08em;
+  width: 0.08em;
+  height: 0.88em;
+  margin-left: 0.12em;
+  background: var(--accent-bright);
+  box-shadow: 0 0 10px rgba(98, 230, 154, 0.65);
+  animation: cadCaretBlink 0.74s steps(1, end) infinite;
+}
+
+.skills-subtitle {
+  max-width: 680px;
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+/* Compact component tanks with a tighter packing envelope. */
+.skills-workspace {
+  gap: 10px;
+  padding: 12px;
+}
+
+.category-tank-header {
+  padding: 8px 10px;
+}
+
+.category-tank-surface,
+.category-tank .skills-cloud {
+  min-height: 225px;
+}
+
+.category-tank .skill-bubble {
+  gap: 6px;
+  max-width: 155px;
+  padding: 8px 10px;
+}
+
+.category-tank .skill-bubble img {
+  width: 18px;
+  height: 18px;
+}
+
+.category-tank .skill-bubble span {
+  font-size: 0.78rem;
+}
+
+/* Project evidence rail and hover-activated skill tank. */
+.project-highlight-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 18px 20px 4px;
+  overflow: hidden;
+  border: 1px solid rgba(98, 230, 154, 0.22);
+  border-radius: 5px;
+  background: rgba(98, 230, 154, 0.2);
+}
+
+.project-highlight-strip > span {
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  min-height: 72px;
+  padding: 10px;
+  background: rgba(3, 29, 14, 0.92);
+}
+
+.project-highlight-strip strong {
+  overflow: hidden;
+  color: var(--accent-bright);
+  font: 700 clamp(0.78rem, 1.4vw, 1rem)/1.15 'Orbitron', sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-highlight-strip small {
+  margin-top: 5px;
+  color: rgba(205, 230, 214, 0.6);
+  font-size: 0.62rem;
+  line-height: 1.25;
+}
+
+.project-skill-tank {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(98, 230, 154, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(98, 230, 154, 0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(8, 64, 31, 0.9), rgba(2, 23, 10, 0.96));
+  background-size: 18px 18px, 18px 18px, auto;
+  opacity: 0;
+  transform: scale(1.025);
+  transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.featured-image-container:hover .project-skill-tank,
+.featured-image-container:focus-within .project-skill-tank {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.project-skill-tank-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(153, 244, 189, 0.28);
+  color: #adf5c8;
+  background: rgba(4, 34, 16, 0.8);
+  font: 600 0.56rem/1 'Orbitron', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.project-skill-tank-header small {
+  color: rgba(184, 231, 201, 0.5);
+}
+
+.project-skill-cloud {
+  position: absolute;
+  inset: 34px 0 0;
+}
+
+.project-skill-cloud > span {
+  position: absolute;
+  left: var(--skill-x);
+  top: var(--skill-y);
+  max-width: 42%;
+  padding: 7px 10px;
+  overflow: hidden;
+  border: 1px solid rgba(156, 241, 188, 0.42);
+  border-radius: 999px;
+  background: linear-gradient(145deg, rgba(150, 239, 184, 0.95), rgba(56, 170, 101, 0.95));
+  color: #052411;
+  box-shadow: 0 6px 0 rgba(3, 50, 21, 0.75), 0 12px 20px rgba(0, 0, 0, 0.22);
+  font: 700 0.65rem/1 'Chakra Petch', sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(14px);
+}
+
+.featured-image-container:hover .project-skill-cloud > span,
+.featured-image-container:focus-within .project-skill-cloud > span {
+  animation: project-skill-float-in 0.42s ease var(--skill-delay) forwards, bubbleFloat 5s ease-in-out calc(var(--skill-delay) + 0.42s) infinite;
+}
+
+@keyframes project-skill-float-in {
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Chronological experience rendered as modules on one PCB control bus. */
+.tabs-section .experience-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+  padding: 16px 0 18px;
+}
+
+.experience-signal-bus {
+  position: absolute;
+  z-index: 0;
+  left: 35px;
+  top: 28px;
+  bottom: 28px;
+  width: 10px;
+  border: 2px solid rgba(98, 230, 154, 0.78);
+  border-radius: 5px;
+  background: #062b16;
+  box-shadow: inset 0 0 0 2px rgba(2, 15, 7, 0.8), 0 0 15px rgba(98, 230, 154, 0.24);
+}
+
+.experience-signal-bus::before,
+.experience-signal-bus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--accent-bright);
+  border-radius: 50%;
+  background: #07351b;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px rgba(98, 230, 154, 0.1);
+}
+
+.experience-signal-bus::before { top: -9px; }
+.experience-signal-bus::after { bottom: -9px; }
+
+.experience-signal-bus i {
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  width: 2px;
+  height: calc(100% - 8px);
+  background: var(--accent-bright);
+  box-shadow: 0 0 8px var(--accent-bright);
+  animation: experience-signal-flow 1.8s linear infinite;
+}
+
+@keyframes experience-signal-flow {
+  0% { clip-path: inset(0 0 100%); }
+  55%, 100% { clip-path: inset(0); }
+}
+
+.tabs-section .experience-list .experience-card {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 92px);
+  min-height: 0;
+  margin: 0 0 0 92px;
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.tabs-section .experience-list .experience-card:nth-of-type(even) {
+  margin-top: 0;
+}
+
+.tabs-section .experience-list .experience-card::after {
+  content: "";
+  position: absolute;
+  left: -52px;
+  top: 48px;
+  width: 52px;
+  height: 5px;
+  border-top: 2px solid var(--accent-bright);
+  border-bottom: 1px solid rgba(5, 35, 16, 0.95);
+  background: rgba(98, 230, 154, 0.18);
+}
+
+.experience-connector {
+  position: absolute;
+  left: -80px;
+  top: 32px;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  padding: 5px 4px;
+  border: 1px solid rgba(98, 230, 154, 0.5);
+  border-radius: 3px;
+  background: #0b4d28;
+  color: #c0f7d3;
+  font: 600 0.47rem/1 'Orbitron', sans-serif;
+  letter-spacing: 0.06em;
+  box-shadow: 0 3px 0 #031c0d;
+}
+
+.experience-connector i {
+  position: absolute;
+  right: -6px;
+  width: 6px;
+  height: 9px;
+  background: #d1a94c;
+}
+
+body.light-mode .project-highlight-strip > span { background: rgba(238, 248, 241, 0.96); }
+body.light-mode .project-highlight-strip small { color: #587665; }
+body.light-mode .experience-signal-bus { background: #c9e5d3; }
+
+@media (max-width: 720px) {
+  .education-section h2[data-typewriter],
+  #skills h2[data-typewriter] { font-size: clamp(2.2rem, 11vw, 3.8rem); }
+
+  .project-highlight-strip { margin-left: 14px; margin-right: 14px; }
+  .project-highlight-strip > span { padding: 8px 6px; }
+  .project-skill-cloud > span { font-size: 0.58rem; }
+
+  .tabs-section .experience-list .experience-card {
+    width: calc(100% - 52px);
+    margin-left: 52px;
+  }
+
+  .experience-signal-bus { left: 11px; }
+  .experience-connector { left: -49px; width: 42px; }
+  .tabs-section .experience-list .experience-card::after { left: -32px; width: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #skills h2[data-typewriter]::after,
+  .experience-signal-bus i { animation: none; }
+  .project-skill-cloud > span { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Static CAD component library: compact footprints replace tank physics. */
+.category-tank-surface {
+  min-height: 0;
+  padding: 8px;
+  background:
+    linear-gradient(rgba(125, 171, 142, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 171, 142, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, color-mix(in srgb, var(--category-color) 9%, #15241a), #0b1710);
+  background-size: 12px 12px, 12px 12px, auto;
+}
+
+.category-tank .tank-water,
+.category-origin {
+  display: none;
+}
+
+.category-tank .skills-cloud {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+  gap: 7px;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  padding: 0;
+  touch-action: auto;
+}
+
+.category-tank .skill-bubble {
+  position: relative;
+  left: auto !important;
+  top: auto !important;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  justify-content: start;
+  width: 100%;
+  max-width: none;
+  min-height: 39px;
+  padding: 7px 9px;
+  border-radius: 3px;
+  transform: none !important;
+  animation: none !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.78),
+    inset -1px -1px 0 color-mix(in srgb, var(--category-color) 24%, #183521),
+    0 2px 0 color-mix(in srgb, var(--category-color) 35%, #102619);
+}
+
+.category-tank .skill-bubble::before {
+  content: "";
+  position: absolute;
+  inset: 4px auto 4px -3px;
+  width: 5px;
+  background: repeating-linear-gradient(to bottom, #d5b260 0 3px, transparent 3px 7px);
+}
+
+.category-tank .skill-bubble::after {
+  left: 8px;
+  right: 8px;
+  bottom: -2px;
+}
+
+.category-tank .skill-bubble:hover,
+.category-tank .skill-bubble:focus-visible {
+  border-color: var(--category-color);
+  transform: translateY(-1px) !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+    0 3px 0 color-mix(in srgb, var(--category-color) 45%, #102619),
+    0 0 12px color-mix(in srgb, var(--category-color) 16%, transparent);
+}
+
+.category-tank .skill-bubble img {
+  width: 16px;
+  height: 16px;
+}
+
+.category-tank .skill-bubble span {
+  font-size: 0.72rem;
+}
+
+.curriculum-banner-list {
+  max-height: none;
+}
+
+.curriculum-banner {
+  transform: none;
+}
+
+body.light-mode .category-tank-surface {
+  background:
+    linear-gradient(rgba(48, 104, 68, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 104, 68, 0.09) 1px, transparent 1px),
+    linear-gradient(180deg, color-mix(in srgb, var(--category-color) 12%, #edf5ef), #dce9e0);
+  background-size: 12px 12px, 12px 12px, auto;
+}
+
+@media (max-width: 720px) {
+  .category-tank .skills-cloud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 0;
+  }
+}
+
+/* ESP32-inspired skills boards with plated GPIO rails and IC packages. */
+.category-tank {
+  border: 1px solid color-mix(in srgb, var(--category-color) 55%, #102e1c);
+  border-radius: 9px;
+  background: linear-gradient(145deg, #17623a, #0a3f22 58%, #07331b);
+  box-shadow:
+    inset 1px 1px 0 rgba(195, 255, 216, 0.16),
+    inset -2px -2px 0 rgba(0, 20, 7, 0.55),
+    0 5px 0 #061d0e,
+    0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+.category-tank-header {
+  position: relative;
+  overflow: hidden;
+  min-height: 43px;
+  padding-left: 18px;
+  padding-right: 94px;
+  border-bottom-color: rgba(196, 242, 211, 0.2);
+  background:
+    linear-gradient(90deg, rgba(245, 255, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, #17633a, #0e4c2b);
+  background-size: 10px 10px, auto;
+}
+
+.category-tank-header::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  width: 64px;
+  height: 26px;
+  border-top: 2px solid rgba(210, 185, 102, 0.72);
+  border-bottom: 2px solid rgba(210, 185, 102, 0.72);
+  background:
+    linear-gradient(90deg, transparent 0 7px, rgba(210, 185, 102, 0.72) 7px 9px, transparent 9px 16px) 0 4px / 16px 7px repeat-x,
+    linear-gradient(90deg, rgba(210, 185, 102, 0.72) 0 2px, transparent 2px 9px, rgba(210, 185, 102, 0.72) 9px 11px, transparent 11px) 0 13px / 16px 7px repeat-x;
+  opacity: 0.75;
+}
+
+.category-tank-header h3,
+.category-tank-header span,
+.category-tank-header small {
+  position: relative;
+  z-index: 1;
+}
+
+.category-tank-surface {
+  position: relative;
+  padding: 10px 25px;
+  border-top: 1px solid rgba(3, 32, 14, 0.75);
+  background:
+    linear-gradient(rgba(180, 228, 196, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 228, 196, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 50% 45%, rgba(98, 230, 154, 0.09), transparent 48%),
+    linear-gradient(145deg, #0d4e2b, #073a1f);
+  background-size: 10px 10px, 10px 10px, auto, auto;
+}
+
+.category-tank-surface::before,
+.category-tank-surface::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  top: 8px;
+  bottom: 8px;
+  width: 14px;
+  pointer-events: none;
+  background: radial-gradient(circle, #07150c 0 3px, #d7b768 3.5px 5px, #725b25 5.5px 6px, transparent 6.5px) center top / 14px 18px repeat-y;
+  filter: drop-shadow(0 1px 0 rgba(255, 242, 188, 0.3));
+}
+
+.category-tank-surface::before { left: 5px; }
+.category-tank-surface::after { right: 5px; }
+
+.category-tank .skills-cloud {
+  grid-template-columns: repeat(auto-fit, minmax(124px, 1fr));
+  gap: 8px;
+}
+
+.category-tank .skill-bubble {
+  position: relative;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: 1fr;
+  min-height: 47px;
+  padding: 7px 14px 6px;
+  overflow: visible;
+  border: 1px solid rgba(9, 16, 11, 0.95);
+  border-radius: 4px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #29312c, #151b17);
+  background-size: 7px 7px, auto;
+  color: #e5eee8;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.1),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.34),
+    0 3px 0 rgba(3, 26, 11, 0.75);
+}
+
+.category-tank .skill-bubble::before,
+.category-tank .skill-bubble::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  width: 6px;
+  height: auto;
+  opacity: 1;
+  background: repeating-linear-gradient(to bottom, #d2ac58 0 3px, #6d541f 3px 5px, transparent 5px 9px);
+}
+
+.category-tank .skill-bubble::before { left: -5px; }
+.category-tank .skill-bubble::after { right: -5px; left: auto; }
+
+.category-tank .skill-bubble img,
+.category-tank .skill-monogram {
+  grid-row: 1;
+  align-self: center;
+}
+
+.category-tank .skill-monogram {
+  color: var(--category-color);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.category-tank .skill-name {
+  align-self: center;
+  color: #edf5ef;
+}
+
+.category-tank .skill-bubble:hover,
+.category-tank .skill-bubble:focus-visible,
+.category-tank .skill-bubble.is-selected {
+  border-color: color-mix(in srgb, var(--category-color) 70%, #111);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, #344139, #1b2820);
+  background-size: 7px 7px, auto;
+  color: white;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.13),
+    0 3px 0 color-mix(in srgb, var(--category-color) 35%, #082313),
+    0 0 14px color-mix(in srgb, var(--category-color) 18%, transparent);
+}
+
+body.light-mode .category-tank {
+  background: linear-gradient(145deg, #2d8150, #17623a);
+}
+
+body.light-mode .category-tank-surface {
+  background:
+    linear-gradient(rgba(24, 91, 49, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 91, 49, 0.075) 1px, transparent 1px),
+    linear-gradient(145deg, #dceee2, #c5dfcd);
+  background-size: 10px 10px, 10px 10px, auto;
+}
+
+body.light-mode .category-tank .skill-bubble {
+  border-color: rgba(32, 50, 39, 0.8);
+  background: linear-gradient(180deg, #47534b, #273129);
+}
+
+@media (max-width: 720px) {
+  .category-tank-header { padding-right: 74px; }
+  .category-tank-header::after { width: 48px; }
+  .category-tank-surface { padding-left: 22px; padding-right: 22px; }
+  .category-tank .skills-cloud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .category-tank .skill-bubble { min-width: 0; padding-left: 10px; padding-right: 10px; }
+}
+
+/* Functional CAD command palette for filtering, assembling and inspecting skills. */
+.cad-skills-window {
+  position: relative;
+  overflow: visible;
+}
+
+button.cad-tool-group {
+  appearance: none;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  background: transparent;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+button.cad-tool-group:hover,
+button.cad-tool-group:focus-visible {
+  outline: 0;
+  background: rgba(98, 230, 154, 0.1);
+  color: #effff4;
+}
+
+button.cad-tool-group.is-active {
+  background: linear-gradient(180deg, rgba(94, 206, 138, 0.22), rgba(28, 104, 59, 0.2));
+  color: var(--accent-bright);
+  box-shadow: inset 0 -3px 0 var(--accent-bright);
+}
+
+button.cad-tool-group.is-active i {
+  border-color: var(--accent-bright);
+  background: rgba(98, 230, 154, 0.12);
+  box-shadow: 0 0 10px rgba(98, 230, 154, 0.2);
+}
+
+.cad-command-palette {
+  position: absolute;
+  z-index: 30;
+  top: 78px;
+  left: min(240px, 18vw);
+  width: min(430px, calc(100% - 28px));
+  padding: 10px;
+  border: 1px solid rgba(132, 229, 169, 0.42);
+  border-radius: 6px;
+  background:
+    linear-gradient(rgba(98, 230, 154, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(98, 230, 154, 0.035) 1px, transparent 1px),
+    rgba(11, 31, 19, 0.98);
+  background-size: 12px 12px, 12px 12px, auto;
+  box-shadow: 0 8px 0 rgba(2, 20, 8, 0.88), 0 24px 44px rgba(0, 0, 0, 0.38);
+}
+
+.cad-command-palette[hidden],
+.skill-bubble[hidden],
+.category-tank[hidden] {
+  display: none !important;
+}
+
+.cad-palette-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 5px 10px;
+  border-bottom: 1px solid rgba(98, 230, 154, 0.18);
+  color: var(--accent-bright);
+  font: 600 0.6rem/1 'Orbitron', sans-serif;
+  letter-spacing: 0.11em;
+}
+
+.cad-palette-header button {
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(98, 230, 154, 0.3);
+  border-radius: 3px;
+  background: rgba(98, 230, 154, 0.07);
+  color: #dcfae7;
+  font-size: 1rem;
+}
+
+.cad-palette-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  max-height: min(420px, 60vh);
+  padding-top: 9px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(98, 230, 154, 0.55) rgba(4, 24, 11, 0.5);
+}
+
+.cad-palette-options > button {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid rgba(98, 230, 154, 0.18);
+  border-radius: 4px;
+  background: rgba(32, 77, 48, 0.32);
+  color: #e9f7ee;
+  text-align: left;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.cad-palette-options > button:hover,
+.cad-palette-options > button:focus-visible {
+  outline: 0;
+  border-color: var(--accent-bright);
+  background: rgba(50, 135, 82, 0.38);
+  transform: translateY(-1px);
+}
+
+.cad-palette-options strong {
+  font: 600 0.7rem/1.2 'Chakra Petch', sans-serif;
+}
+
+.cad-palette-options small {
+  color: rgba(199, 225, 208, 0.56);
+  font-size: 0.61rem;
+  line-height: 1.3;
+}
+
+.category-tank .skill-bubble.is-assembly-selected {
+  border-color: #f0c65a;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, #51462b, #2d281b);
+  background-size: 7px 7px, auto;
+  box-shadow: 0 0 0 2px rgba(240, 198, 90, 0.18), 0 3px 0 #775f24, 0 0 15px rgba(240, 198, 90, 0.2);
+}
+
+.assembled-skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.assembled-skill-list span {
+  padding: 5px 8px;
+  border: 1px solid rgba(240, 198, 90, 0.34);
+  border-radius: 3px;
+  background: rgba(240, 198, 90, 0.08);
+  color: #f4d57f;
+  font: 600 0.58rem/1 'Chakra Petch', sans-serif;
+}
+
+body.light-mode .cad-command-palette {
+  border-color: rgba(27, 111, 63, 0.32);
+  background-color: rgba(241, 248, 243, 0.98);
+  box-shadow: 0 8px 0 rgba(52, 111, 74, 0.25), 0 20px 35px rgba(43, 89, 60, 0.16);
+}
+
+body.light-mode .cad-palette-options > button {
+  border-color: rgba(27, 111, 63, 0.2);
+  background: rgba(255, 255, 255, 0.62);
+  color: #173c28;
+}
+
+body.light-mode .cad-palette-options small { color: #617b69; }
+
+@media (max-width: 720px) {
+  .cad-command-palette {
+    top: 76px;
+    left: 14px;
+  }
+
+  .cad-palette-options { grid-template-columns: 1fr; }
 }

@@ -32,7 +32,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Product Engineering Portfolio</p>
         <h1>Hello! I'm <span id="name">XXX</span>!</h1>
-        <p class="role-typewriter" aria-label="Electrical Engineer, Minor in AI">
+        <p class="role-typewriter" aria-label="Automation Engineer, Robotics Engineer, FDM Enthusiast">
           <span id="role-typewriter-text"></span><span class="role-typewriter-caret" aria-hidden="true"></span>
         </p>
         <p id="summary"></p>
@@ -77,23 +77,25 @@
     <section id="skills" class="glass-section reveal-section">
       <div class="section-heading">
         <p class="eyebrow">Skills</p>
-        <h2>Engineering toolchain and applied capabilities.</h2>
+        <h2 id="skills-typewriter" data-typewriter="SKILLS" aria-label="Skills"></h2>
+        <p class="skills-subtitle">Engineering toolchain and applied capabilities.</p>
       </div>
       <div class="skills-instrument-panel">
         <div class="skills-instrument-title"><span>SYS_METRICS</span><small>PORTFOLIO TELEMETRY</small></div>
         <div id="stats-dashboard" class="stats-dashboard"></div>
       </div>
       <div class="cad-skills-window">
-        <div class="cad-command-bar" aria-hidden="true">
+        <div class="cad-command-bar" aria-label="Skills CAD commands">
           <div class="cad-file-tab"><span class="cad-app-mark">JN</span><strong>SKILL_ASSEMBLY.f3d</strong></div>
-          <div class="cad-tool-group"><i>+</i><span>Create</span></div>
-          <div class="cad-tool-group"><i>&#9633;</i><span>Modify</span></div>
-          <div class="cad-tool-group"><i>&#8644;</i><span>Assemble</span></div>
-          <div class="cad-tool-group"><i>&#8982;</i><span>Inspect</span></div>
+          <button type="button" class="cad-tool-group" data-cad-command="create" aria-pressed="false"><i>+</i><span>Create</span></button>
+          <button type="button" class="cad-tool-group" data-cad-command="modify" aria-pressed="false"><i>&#9633;</i><span>Modify</span></button>
+          <button type="button" class="cad-tool-group" data-cad-command="assemble" aria-pressed="false"><i>&#8644;</i><span>Assemble</span></button>
+          <button type="button" class="cad-tool-group is-active" data-cad-command="inspect" aria-pressed="true"><i>&#8982;</i><span>Inspect</span></button>
           <div class="cad-view-status"><span>DESIGN</span><small>TOP VIEW</small></div>
         </div>
+        <div id="cad-command-palette" class="cad-command-palette" hidden></div>
         <div id="skills-workspace" class="skills-workspace"></div>
-        <div class="cad-status-bar" aria-hidden="true"><span>GRID: 10 mm</span><span>SNAP: ON</span><span>5 COMPONENT TANKS</span></div>
+        <div class="cad-status-bar"><span>GRID: 10 mm</span><span>SNAP: ON</span><span id="cad-mode-status" aria-live="polite">MODE: INSPECT</span></div>
       </div>
     </section>
 

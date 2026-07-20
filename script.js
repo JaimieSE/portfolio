@@ -73,6 +73,7 @@ const portfolio = {
   experience: [
     {
       company: "Innowave Tech Pte Ltd",
+      start: "2025-08",
       role: "Automation Engineer Intern",
       period: "Aug 2025 - Jan 2026",
       tools: ["Fusion 360", "Excel", "Word", "PowerPoint"],
@@ -91,6 +92,7 @@ const portfolio = {
     },
     {
       company: "VEXU Robotics Team, SOAR",
+      start: "2024-06",
       period: "June 2024 - Dec 2024",
       responsibilities: [
         "3D print farm manager.",
@@ -208,6 +210,12 @@ const portfolio = {
       meta: "SUTD Engineering Design Innovation, 30.007",
       description:
         "A wall cleaning robot to automate the cleaning process in hard-to-reach areas of HDB flats.",
+      highlights: [
+        { value: "26 Nm", label: "Winch torque" },
+        { value: "63.6%", label: "AI validation accuracy" },
+        { value: "0.511", label: "mAP@50" }
+      ],
+      skillTags: ["ESP32", "Raspberry Pi 5", "FluidNC", "MQTT", "G-code", "YOLO / OpenCV", "Fusion 360", "Power Budgeting"],
       fullDescription:
         "DalLegs is an innovative wall-climbing robot designed to clean hard-to-reach areas in HDB flats. It uses advanced adhesion technology and automated navigation to efficiently cover vertical surfaces.",
       caseStudy: {
@@ -325,6 +333,12 @@ const portfolio = {
       meta: "SUTD 3D Project, with ST Engineering",
       description:
         "A prototype of a self deploying solar farm using swarm system to provide energy to remote areas.",
+      highlights: [
+        { value: "1 month", label: "Proof-of-concept sprint" },
+        { value: "5", label: "Team members" },
+        { value: "ST Eng.", label: "Stakeholder showcase" }
+      ],
+      skillTags: ["Solar PV", "Circuit Wiring", "Arduino", "C++", "Fusion 360", "3D Printing", "Ultrasonic Sensors"],
       fullDescription:
         "The Hive is a swarm robotics project that deploys solar panels autonomously. Each unit communicates with others to optimize coverage and energy generation in remote areas.",
       caseStudy: {
@@ -398,6 +412,12 @@ const portfolio = {
       meta: "Electromagnetism & Applications",
       description:
         "A miniaturised antenna designed to fit within a swallowable pill for colonoscopy applications.",
+      highlights: [
+        { value: "907.57 MHz", label: "Measured marker" },
+        { value: "−10.05 dB", label: "Measured S11" },
+        { value: "1.15 dBi", label: "Simulated gain" }
+      ],
+      skillTags: ["CST Studio", "Antenna Simulation", "VNA Testing", "S11 Analysis", "Canva"],
       fullDescription:
         "This project explores the electromagnetic design and miniaturisation of an ingestible antenna. The antenna is dimensioned to fit within a pill-sized capsule while supporting wireless communication from inside the human body.",
       caseStudy: {
@@ -547,16 +567,18 @@ document.getElementById("name").textContent = portfolio.name;
 document.getElementById("summary").textContent = portfolio.summary;
 
 const roleTypewriterText = document.getElementById("role-typewriter-text");
-const rolePhrase = "Electrical Engineer / Minor in AI";
+const rolePhrases = ["Automation Engineer", "Robotics Engineer", "FDM Enthusiast"];
 
 if (roleTypewriterText) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    roleTypewriterText.textContent = rolePhrase;
+    roleTypewriterText.textContent = rolePhrases.join(" / ");
   } else {
+    let rolePhraseIndex = 0;
     let roleCharacterIndex = 0;
     let roleIsDeleting = false;
 
     function animateRoleTypewriter() {
+      const rolePhrase = rolePhrases[rolePhraseIndex];
       roleTypewriterText.textContent = rolePhrase.slice(0, roleCharacterIndex);
 
       if (!roleIsDeleting && roleCharacterIndex < rolePhrase.length) {
@@ -570,6 +592,7 @@ if (roleTypewriterText) {
         window.setTimeout(animateRoleTypewriter, 38);
       } else {
         roleIsDeleting = false;
+        rolePhraseIndex = (rolePhraseIndex + 1) % rolePhrases.length;
         window.setTimeout(animateRoleTypewriter, 520);
       }
     }
@@ -774,121 +797,175 @@ function showSkillProjects(skillIndex) {
   });
 }
 
-let activeBubble = null;
-let activeSkillsCloud = null;
-let bubbleDragStart = null;
-let bubbleWasDragged = false;
+const cadCommandPalette = document.getElementById("cad-command-palette");
+const cadModeStatus = document.getElementById("cad-mode-status");
+const cadCommandButtons = [...document.querySelectorAll("[data-cad-command]")];
+let skillInteractionMode = "inspect";
+const assembledSkillIndices = new Set();
+
+const skillProfiles = {
+  all: null,
+  automation: ["ESP32", "Raspberry Pi 5", "FluidNC", "MQTT", "G-code", "Arduino", "C++", "Power Budgeting", "Circuit Wiring", "Fusion 360", "Python", "HTML / CSS / JS", "Excel"],
+  robotics: ["ESP32", "Raspberry Pi 5", "FluidNC", "MQTT", "G-code", "Arduino", "C++", "Marlin", "Power Budgeting", "Circuit Wiring", "FEA / CFD", "Fusion 360", "3D Printing", "Python", "PyTorch", "YOLO / OpenCV"],
+  fdm: ["Fusion 360", "3D Printing", "Marlin"]
+};
+
+function setCadMode(mode, statusLabel = mode.toUpperCase()) {
+  skillInteractionMode = mode;
+  cadCommandButtons.forEach((button) => {
+    const active = button.dataset.cadCommand === mode;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  if (cadModeStatus) cadModeStatus.textContent = `MODE: ${statusLabel}`;
+}
+
+function clearSkillSelection() {
+  assembledSkillIndices.clear();
+  skillsWorkspace.querySelectorAll(".skill-bubble").forEach((bubble) => {
+    bubble.classList.remove("is-selected", "is-assembly-selected");
+  });
+  skillDetailPanel.classList.remove("is-visible");
+}
+
+function applySkillFilter(predicate, statusLabel) {
+  clearSkillSelection();
+  skillsWorkspace.querySelectorAll(".skill-bubble").forEach((bubble) => {
+    const skill = portfolio.skills[Number(bubble.dataset.skillIndex)];
+    bubble.hidden = !predicate(skill);
+  });
+  skillsWorkspace.querySelectorAll(".category-tank").forEach((tank) => {
+    tank.hidden = !tank.querySelector(".skill-bubble:not([hidden])");
+  });
+  setCadMode("inspect", statusLabel);
+}
+
+function openCadPalette(title, options) {
+  cadCommandPalette.innerHTML = `
+    <div class="cad-palette-header"><span>${title}</span><button type="button" aria-label="Close command palette">&times;</button></div>
+    <div class="cad-palette-options">${options.map((option) => `<button type="button" data-option="${option.value}"><strong>${option.label}</strong><small>${option.description}</small></button>`).join("")}</div>
+  `;
+  cadCommandPalette.hidden = false;
+  cadCommandPalette.querySelector(".cad-palette-header button").addEventListener("click", () => {
+    cadCommandPalette.hidden = true;
+  });
+  return cadCommandPalette.querySelectorAll("[data-option]");
+}
+
+function openProjectFromAssembly(projectName) {
+  const project = portfolio.projects.find((item) => item.name === projectName);
+  if (!project) return;
+  tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.section === "projects"));
+  renderProjects();
+  document.getElementById("work").scrollIntoView({ behavior: "smooth", block: "start" });
+  window.setTimeout(() => showProjectModal(project), 350);
+}
+
+function updateAssemblyPanel() {
+  const selectedSkills = [...assembledSkillIndices].map((index) => portfolio.skills[index]);
+  if (!selectedSkills.length) {
+    skillDetailPanel.innerHTML = `
+      <button type="button" class="skill-detail-close" aria-label="Close assembly mode">&times;</button>
+      <p class="skill-detail-category">ASSEMBLE / MULTI-SELECT</p>
+      <h3>Build a skill stack</h3>
+      <p>Select two or more IC packages to find projects where those capabilities were integrated.</p>
+    `;
+  } else {
+    const commonProjects = selectedSkills.length > 1
+      ? selectedSkills
+        .map((skill) => skill.projects)
+        .reduce((common, projects) => common.filter((project) => projects.includes(project)))
+      : [];
+    const assemblyMessage = selectedSkills.length === 1
+      ? "Select at least one more component"
+      : commonProjects.length
+        ? "Integrated together in"
+        : "No single project currently uses every selected component";
+    skillDetailPanel.innerHTML = `
+      <button type="button" class="skill-detail-close" aria-label="Close assembly mode">&times;</button>
+      <p class="skill-detail-category">ASSEMBLED STACK</p>
+      <h3>${selectedSkills.length} components selected</h3>
+      <div class="assembled-skill-list">${selectedSkills.map((skill) => `<span>${skill.name}</span>`).join("")}</div>
+      <p class="skill-detail-kicker skill-projects-label">${assemblyMessage}</p>
+      ${commonProjects.length ? `<div class="skill-project-links">${commonProjects.map((project) => `<button type="button" data-assembly-project="${project}">${project}<span aria-hidden="true">&nearr;</span></button>`).join("")}</div>` : ""}
+    `;
+  }
+  skillDetailPanel.classList.add("is-visible");
+  skillDetailPanel.querySelector(".skill-detail-close").addEventListener("click", () => {
+    clearSkillSelection();
+    setCadMode("inspect");
+  });
+  skillDetailPanel.querySelectorAll("[data-assembly-project]").forEach((button) => {
+    button.addEventListener("click", () => openProjectFromAssembly(button.dataset.assemblyProject));
+  });
+}
+
+cadCommandButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const command = button.dataset.cadCommand;
+    if (command === "create") {
+      setCadMode("create", "CREATE PROFILE");
+      const options = [
+        { value: "all", label: "Full assembly", description: "Load every skill component" },
+        { value: "automation", label: "Automation", description: "Controls, firmware and implementation" },
+        { value: "robotics", label: "Robotics", description: "Mechanics, perception and embedded control" },
+        { value: "fdm", label: "FDM", description: "CAD, printing and motion firmware" }
+      ];
+      openCadPalette("CREATE / ROLE CONFIGURATION", options).forEach((optionButton) => {
+        optionButton.addEventListener("click", () => {
+          const profile = optionButton.dataset.option;
+          const includedSkills = skillProfiles[profile];
+          applySkillFilter((skill) => !includedSkills || includedSkills.includes(skill.name), `PROFILE: ${profile.toUpperCase()}`);
+          cadCommandPalette.hidden = true;
+        });
+      });
+    } else if (command === "modify") {
+      setCadMode("modify", "MODIFY FILTER");
+      const options = [{ value: "all", label: "All disciplines", description: "Restore the complete board" }]
+        .concat(skillCategories.map((category) => ({ value: category, label: category, description: `Show ${category.toLowerCase()} components` })));
+      openCadPalette("MODIFY / DISCIPLINE FILTER", options).forEach((optionButton) => {
+        optionButton.addEventListener("click", () => {
+          const category = optionButton.dataset.option;
+          applySkillFilter((skill) => category === "all" || skill.category === category, category === "all" ? "ALL DISCIPLINES" : category.toUpperCase());
+          cadCommandPalette.hidden = true;
+        });
+      });
+    } else if (command === "assemble") {
+      cadCommandPalette.hidden = true;
+      clearSkillSelection();
+      setCadMode("assemble");
+      updateAssemblyPanel();
+    } else {
+      cadCommandPalette.hidden = true;
+      clearSkillSelection();
+      setCadMode("inspect");
+    }
+  });
+});
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-function setBubblePosition(bubble, xPercent, yPercent) {
-  bubble.style.left = `${clamp(xPercent, 12, 88)}%`;
-  bubble.style.top = `${clamp(yPercent, 18, 82)}%`;
-}
-
-function resolveBubbleCollisions(draggedBubble, skillsCloud) {
-  const cloudRect = skillsCloud.getBoundingClientRect();
-  const bubbles = [...skillsCloud.querySelectorAll(".skill-bubble")];
-
-  for (let pass = 0; pass < 3; pass += 1) {
-    bubbles.forEach((bubble) => {
-      if (bubble === draggedBubble) {
-        return;
-      }
-
-      const draggedRect = draggedBubble.getBoundingClientRect();
-      const bubbleRect = bubble.getBoundingClientRect();
-      const draggedX = draggedRect.left + draggedRect.width / 2;
-      const draggedY = draggedRect.top + draggedRect.height / 2;
-      const bubbleX = bubbleRect.left + bubbleRect.width / 2;
-      const bubbleY = bubbleRect.top + bubbleRect.height / 2;
-      const deltaX = bubbleX - draggedX;
-      const deltaY = bubbleY - draggedY;
-      const overlapX = (draggedRect.width + bubbleRect.width) / 2 - Math.abs(deltaX);
-      const overlapY = (draggedRect.height + bubbleRect.height) / 2 - Math.abs(deltaY);
-
-      if (overlapX <= 0 || overlapY <= 0) {
-        return;
-      }
-
-      const pushHorizontally = overlapX < overlapY;
-      const pushedX = pushHorizontally
-        ? bubbleX + (deltaX >= 0 ? overlapX + 4 : -overlapX - 4)
-        : bubbleX;
-      const pushedY = pushHorizontally
-        ? bubbleY
-        : bubbleY + (deltaY >= 0 ? overlapY + 4 : -overlapY - 4);
-      const xPercent = ((pushedX - cloudRect.left) / cloudRect.width) * 100;
-      const yPercent = ((pushedY - cloudRect.top) / cloudRect.height) * 100;
-
-      setBubblePosition(bubble, xPercent, yPercent);
-      bubble.classList.add("was-bumped");
-      window.setTimeout(() => bubble.classList.remove("was-bumped"), 260);
-    });
-  }
-}
-
-skillsWorkspace.addEventListener("pointerdown", (event) => {
+skillsWorkspace.addEventListener("click", (event) => {
   const bubble = event.target.closest(".skill-bubble");
-  if (!bubble) {
-    return;
+  if (!bubble) return;
+  const skillIndex = Number(bubble.dataset.skillIndex);
+  if (skillInteractionMode === "assemble") {
+    if (assembledSkillIndices.has(skillIndex)) assembledSkillIndices.delete(skillIndex);
+    else assembledSkillIndices.add(skillIndex);
+    bubble.classList.toggle("is-assembly-selected", assembledSkillIndices.has(skillIndex));
+    updateAssemblyPanel();
+  } else {
+    setCadMode("inspect");
+    showSkillProjects(skillIndex);
   }
-
-  if (window.matchMedia("(pointer: coarse), (max-width: 720px)").matches) {
-    showSkillProjects(Number(bubble.dataset.skillIndex));
-    return;
-  }
-
-  event.preventDefault();
-  bubble.classList.add("is-dragging");
-  activeBubble = bubble;
-  activeSkillsCloud = bubble.closest(".skills-cloud");
-  bubbleDragStart = { x: event.clientX, y: event.clientY };
-  bubbleWasDragged = false;
-  bubble.setPointerCapture(event.pointerId);
 });
-
-skillsWorkspace.addEventListener("pointermove", (event) => {
-  if (!activeBubble) {
-    return;
-  }
-
-  if (bubbleDragStart && Math.hypot(event.clientX - bubbleDragStart.x, event.clientY - bubbleDragStart.y) > 6) {
-    bubbleWasDragged = true;
-  }
-
-  const rect = activeSkillsCloud.getBoundingClientRect();
-  const xPercent = ((event.clientX - rect.left) / rect.width) * 100;
-  const yPercent = ((event.clientY - rect.top) / rect.height) * 100;
-  setBubblePosition(activeBubble, xPercent, yPercent);
-  resolveBubbleCollisions(activeBubble, activeSkillsCloud);
-});
-
-function releaseBubble(event) {
-  if (!activeBubble) {
-    return;
-  }
-
-  const releasedBubble = activeBubble;
-  releasedBubble.classList.remove("is-dragging");
-  releasedBubble.releasePointerCapture(event.pointerId);
-  activeBubble = null;
-  activeSkillsCloud = null;
-  bubbleDragStart = null;
-
-  if (!bubbleWasDragged && event.type === "pointerup") {
-    showSkillProjects(Number(releasedBubble.dataset.skillIndex));
-  }
-}
-
-skillsWorkspace.addEventListener("pointerup", releaseBubble);
-skillsWorkspace.addEventListener("pointercancel", releaseBubble);
 
 const revealSections = document.querySelectorAll(".reveal-section");
 const exposureHeading = document.querySelector(".experience-hero h2[data-typewriter]");
 const educationHeading = document.querySelector("#education h2[data-typewriter]");
+const skillsHeading = document.querySelector("#skills h2[data-typewriter]");
 let lastScrollY = window.scrollY;
 let ticking = false;
 
@@ -939,6 +1016,25 @@ function updateEducationTypewriter() {
   educationHeading.style.setProperty("--type-progress", progress.toFixed(3));
 }
 
+function updateSkillsTypewriter() {
+  if (!skillsHeading) return;
+
+  const fullText = skillsHeading.dataset.typewriter;
+  const rect = skillsHeading.closest("#skills").getBoundingClientRect();
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    skillsHeading.textContent = fullText;
+    skillsHeading.style.setProperty("--type-progress", "1");
+    return;
+  }
+
+  const enterProgress = clamp((window.innerHeight * 0.9 - rect.top) / (window.innerHeight * 0.34), 0, 1);
+  const exitProgress = clamp((rect.bottom - window.innerHeight * 0.12) / (window.innerHeight * 0.3), 0, 1);
+  const progress = Math.min(enterProgress, exitProgress);
+  skillsHeading.textContent = fullText.slice(0, Math.round(progress * fullText.length));
+  skillsHeading.style.setProperty("--type-progress", progress.toFixed(3));
+}
+
 function updateRevealSections() {
   const currentScrollY = window.scrollY;
   const direction = currentScrollY > lastScrollY ? "down" : currentScrollY < lastScrollY ? "up" : "down";
@@ -957,6 +1053,7 @@ function updateRevealSections() {
 
   updateExposureTypewriter();
   updateEducationTypewriter();
+  updateSkillsTypewriter();
 }
 
 window.addEventListener(
@@ -1083,16 +1180,19 @@ function initialiseCurriculumTape(section) {
 }
 
 function renderExperience() {
-  contentArea.innerHTML = '<div class="content-list experience-list"></div>';
+  contentArea.innerHTML = '<div class="content-list experience-list"><div class="experience-signal-bus" aria-hidden="true"><i></i></div></div>';
   const list = contentArea.querySelector(".content-list");
 
-  portfolio.experience.forEach((item) => {
+  [...portfolio.experience]
+    .sort((a, b) => String(b.start).localeCompare(String(a.start)))
+    .forEach((item, index) => {
     const bullets = item.responsibilities.map((point) => `<li>${point}</li>`).join("");
 
     const card = document.createElement("article");
     card.className = "card showcase-card experience-card";
     card.innerHTML = `
-      <span class="showcase-index">${String(list.children.length + 1).padStart(2, "0")}</span>
+      <div class="experience-connector" aria-hidden="true"><span>${index === 0 ? "CTRL" : "ACT"}_${String(index + 1).padStart(2, "0")}</span><i></i></div>
+      <span class="showcase-index">${String(index + 1).padStart(2, "0")}</span>
       <h3>${item.company}</h3>
       ${item.role ? `<p class="experience-role">${item.role}</p>` : ""}
       <p class="meta">${item.period}</p>
@@ -1172,7 +1272,8 @@ function renderProjects() {
 
   portfolio.projects.forEach((project) => {
     const mainImage = project.images[0];
-    const hoverImage = project.explodedView || mainImage;
+    const projectSkills = project.skillTags || [...new Set(Object.values(project.technologies || {}).flat())].slice(0, 8);
+    const projectHighlights = project.highlights || [];
     const posterButton = project.poster
       ? `<a href="${project.poster}" target="_blank" rel="noopener noreferrer" class="pdf-button">Download Poster</a>`
       : "";
@@ -1191,8 +1292,20 @@ function renderProjects() {
       <p class="meta">${project.meta}</p>
       <p>${project.description}</p>
 
-      <div class="featured-image-container">
-        <img src="${mainImage}" alt="${project.name} - Main Model" class="featured-image" data-project-id="${project.id}" data-default-image="${mainImage}" data-hover-image="${hoverImage}" />
+      ${projectHighlights.length ? `
+        <div class="project-highlight-strip" aria-label="Selected project results">
+          ${projectHighlights.map((result) => `<span><strong>${result.value}</strong><small>${result.label}</small></span>`).join("")}
+        </div>
+      ` : ""}
+
+      <div class="featured-image-container" tabindex="0" role="button" data-project-id="${project.id}" aria-label="View ${project.name} project details">
+        <img src="${mainImage}" alt="${project.name} - Main Model" class="featured-image" />
+        <div class="project-skill-tank" aria-hidden="true">
+          <div class="project-skill-tank-header"><span>SKILL BUS</span><small>${projectSkills.length} ACTIVE</small></div>
+          <div class="project-skill-cloud">
+            ${projectSkills.map((skill, index) => `<span style="--skill-x:${12 + (index % 3) * 36}%;--skill-y:${20 + Math.floor(index / 3) * 30}%;--skill-delay:${index * 0.08}s">${skill}</span>`).join("")}
+          </div>
+        </div>
         <div class="featured-overlay">View project <span aria-hidden="true">&nearr;</span></div>
       </div>
 
@@ -1205,23 +1318,20 @@ function renderProjects() {
     list.appendChild(card);
   });
 
-  document.querySelectorAll(".featured-image").forEach((img) => {
-    const defaultImage = img.dataset.defaultImage;
-    const hoverImage = img.dataset.hoverImage || defaultImage;
-
-    img.addEventListener("mouseenter", () => {
-      img.src = hoverImage;
-    });
-
-    img.addEventListener("mouseleave", () => {
-      img.src = defaultImage;
-    });
-
-    img.addEventListener("click", () => {
-      const projectId = img.dataset.projectId;
+  document.querySelectorAll(".featured-image-container[data-project-id]").forEach((container) => {
+    const openProject = () => {
+      const projectId = container.dataset.projectId;
       const project = portfolio.projects.find((p) => p.id === projectId);
       if (project) {
         showProjectModal(project);
+      }
+    };
+
+    container.addEventListener("click", openProject);
+    container.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openProject();
       }
     });
   });
