@@ -8,6 +8,7 @@ html {
   scroll-behavior: smooth;
   --mx: 50%;
   --my: 50%;
+  background: #02130b;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
+  isolation: isolate;
   overflow-x: hidden;
   background:
     radial-gradient(circle at 12% 18%, rgba(214, 132, 169, 0.28), transparent 24%),
@@ -1166,6 +1168,10 @@ body::after {
     width: 100%;
     padding: 20px;
   }
+}
+
+html.light-mode {
+  background: #edf7f0;
 }
 
 /* Green accent theme — the existing page background intentionally stays unchanged. */

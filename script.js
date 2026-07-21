@@ -604,6 +604,7 @@ if (roleTypewriterText) {
 const themeSwitch = document.querySelector(".theme-switch");
 
 function applyTheme(isLight) {
+  document.documentElement.classList.toggle("light-mode", isLight);
   document.body.classList.toggle("light-mode", isLight);
   themeSwitch?.setAttribute("aria-checked", String(isLight));
   themeSwitch?.setAttribute("aria-label", isLight ? "Turn off light mode" : "Turn on light mode");
